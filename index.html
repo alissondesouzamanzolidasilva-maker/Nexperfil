@@ -3,183 +3,238 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NexaPerfil | Seu perfil no digital</title>
-<meta name="description" content="Organize e melhore a apresentação digital da sua empresa com a NexaPerfil.">
+<title>NexaPerfil | Presença digital profissional</title>
+<meta name="description" content="Organize e valorize a presença digital da sua empresa com a NexaPerfil.">
+
 <style>
 :root{
-  --bg:#020a13;
-  --panel:#061522;
-  --panel2:#091d2b;
-  --green:#00e887;
-  --green2:#00b96b;
-  --white:#f4f8fb;
-  --muted:#a9bac8;
-  --line:rgba(0,232,135,.19);
+  --black:#030811;
+  --black2:#061321;
+  --blue:#00baff;
+  --blue2:#167dff;
+  --white:#f4fbff;
+  --muted:#a9c0d2;
+  --line:rgba(0,186,255,.28);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
+  background:var(--black);
   color:var(--white);
-  line-height:1.6;
+  line-height:1.75;
+  overflow-x:hidden;
 }
 a{color:inherit;text-decoration:none}
-button,input,select,textarea{font:inherit}
-.container{width:min(1120px,92%);margin:auto}
+.container{width:min(1120px,91%);margin:auto}
+
+/* FUNDO PRETO COM LISTRAS NEON */
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    linear-gradient(115deg,transparent 0 18%,rgba(0,186,255,.10) 18.1%,transparent 18.5% 48%,rgba(255,255,255,.07) 48.1%,transparent 48.4%),
+    linear-gradient(25deg,transparent 0 64%,rgba(0,186,255,.09) 64.1%,transparent 64.5%),
+    radial-gradient(ellipse at 50% 10%,rgba(0,115,190,.22),transparent 55%),
+    var(--black);
+}
+body:after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.22;
+  background:repeating-linear-gradient(
+    135deg,
+    transparent 0 120px,
+    rgba(0,186,255,.16) 121px,
+    transparent 123px,
+    transparent 230px
+  );
+}
 header{
-  position:sticky;top:0;z-index:10;
-  background:rgba(2,10,19,.94);
+  position:sticky;top:0;z-index:20;
+  background:rgba(3,8,17,.94);
   border-bottom:1px solid var(--line);
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(15px);
 }
 .nav{
-  min-height:66px;display:flex;align-items:center;
-  justify-content:space-between;gap:20px;
+  min-height:76px;
+  display:flex;align-items:center;
+  justify-content:space-between;gap:18px;
 }
-.logo{font-size:23px;font-weight:800;white-space:nowrap}
-.logo b{color:var(--green)}
-.logo-mark{color:var(--green);font-size:29px;margin-right:5px}
-nav{display:flex;align-items:center;gap:18px}
-nav a{font-size:12px;color:#d7e1e8}
-nav a:hover{color:var(--green)}
+.logo{font-size:24px;font-weight:900;white-space:nowrap}
+.logo b{color:var(--blue)}
+.logo-mark{color:var(--blue);font-size:30px;margin-right:5px;text-shadow:0 0 16px var(--blue)}
+nav{display:flex;gap:15px;align-items:center}
+nav a{font-size:12px;color:#dcecf6;transition:.2s}
+nav a:hover{color:var(--blue);text-shadow:0 0 10px var(--blue)}
+.menu-btn{display:none;background:transparent;color:white;border:1px solid var(--line);padding:9px 12px;border-radius:8px}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
-  gap:9px;padding:12px 19px;border-radius:11px;
-  background:linear-gradient(110deg,var(--green2),var(--green));
-  color:#00170d;font-weight:800;border:0;cursor:pointer;
-  box-shadow:0 0 22px rgba(0,232,135,.18);
-  transition:.2s;
+  padding:13px 21px;border-radius:10px;
+  color:#00111d;font-weight:900;
+  background:linear-gradient(110deg,#168cff,#00d5ff);
+  border:1px solid #8beaff;
+  box-shadow:0 0 16px rgba(0,186,255,.38),inset 0 0 10px rgba(255,255,255,.2);
+  transition:.2s;cursor:pointer;
 }
-.btn:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(0,232,135,.32)}
-.btn-outline{background:transparent;color:var(--green);border:1px solid var(--green)}
-.menu-btn{display:none;background:none;color:white;border:1px solid var(--line);padding:8px 12px;border-radius:8px}
-.hero{
-  position:relative;overflow:hidden;
-  background:
-    linear-gradient(90deg,rgba(2,10,19,.97),rgba(2,10,19,.78)),
-    url("nexaperfil-bg-clean.png") center/cover,
-    radial-gradient(ellipse at 75% 70%,#064a3b 0%,#061522 45%,#020a13 80%);
-  border-bottom:1px solid var(--line);
+.btn:hover{transform:translateY(-3px);box-shadow:0 0 28px rgba(0,186,255,.65)}
+.btn-outline{background:transparent;color:var(--blue);border:1px solid var(--blue)}
+section{
+  padding:105px 0;
+  border-bottom:1px solid rgba(0,186,255,.18);
+  position:relative;
 }
-.hero-grid{min-height:490px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:45px;padding:55px 0}
-.tag{display:inline-block;color:var(--green);border:1px solid var(--green);border-radius:30px;padding:3px 12px;font-size:12px;font-weight:700;margin-bottom:16px}
-h1{font-size:clamp(34px,4.2vw,54px);line-height:1.12;margin-bottom:18px}
-.green{color:var(--green)}
-.hero p{color:#d1dce4;max-width:550px;font-size:17px;margin-bottom:24px}
-.trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:24px;color:#d9e6ed;font-size:13px}
-.trust span:first-letter{color:var(--green)}
-.phone-wrap{display:flex;justify-content:center;align-items:center;position:relative;min-height:390px}
-.phone{
-  width:245px;padding:12px;border:2px solid #254252;border-radius:35px;
-  background:#020811;box-shadow:0 20px 70px #000,0 0 35px rgba(0,232,135,.13);
-  transform:rotate(2deg);position:relative;
+section:before{
+  content:"";
+  position:absolute;
+  top:0;left:0;width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--blue),white,var(--blue),transparent);
+  opacity:.45;
 }
-.phone:before{content:"";display:block;width:70px;height:13px;background:#172633;border-radius:20px;margin:0 auto 14px}
-.phone-screen{background:linear-gradient(160deg,#0b2230,#020811);border-radius:23px;padding:17px 13px;min-height:320px}
-.phone-logo{font-size:20px;font-weight:800;margin:8px 0}
-.stars{color:#ffd34f;font-size:12px}
-.phone-small{font-size:11px;color:#c2d0d9}
-.phone-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:18px 0}
-.phone-actions span{background:#092a3d;border:1px solid #16445a;border-radius:9px;text-align:center;padding:9px 2px;font-size:9px;color:#39caff}
-.phone-check{font-size:11px;margin:10px 0;color:#dce8ee}
-.phone-check b{color:var(--green);margin-right:6px}
-.float-note{position:absolute;right:0;top:45px;color:white;font-size:20px;font-style:italic;transform:rotate(-8deg)}
-.float-note b{color:var(--green)}
-section{padding:66px 0;border-bottom:1px solid rgba(0,232,135,.12)}
-.section-label{color:var(--green);font-size:12px;font-weight:800;margin-bottom:7px}
-h2{font-size:clamp(26px,3vw,36px);line-height:1.2;margin-bottom:14px}
-h3{font-size:18px;line-height:1.3;margin-bottom:9px}
+.section-label{color:var(--blue);font-size:13px;font-weight:900;letter-spacing:2px;margin-bottom:12px;text-transform:uppercase}
+h1{font-size:clamp(38px,5vw,62px);line-height:1.12;margin-bottom:23px}
+h2{font-size:clamp(29px,3.5vw,42px);line-height:1.2;margin-bottom:20px}
+h3{font-size:20px;line-height:1.35;margin-bottom:12px}
+p{margin-bottom:13px}
+.green{color:var(--blue);text-shadow:0 0 15px rgba(0,186,255,.45)}
 .muted{color:var(--muted)}
-.about-grid,.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px;align-items:center}
-.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.hero{
+  min-height:690px;
+  display:flex;align-items:center;
+  background:
+    linear-gradient(90deg,rgba(3,8,17,.97),rgba(3,8,17,.72)),
+    radial-gradient(ellipse at 78% 50%,rgba(0,140,255,.22),transparent 55%);
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center;padding:75px 0}
+.tag{display:inline-block;color:#aeeeff;border:1px solid var(--blue);border-radius:30px;padding:5px 15px;font-size:12px;margin-bottom:20px;background:rgba(0,186,255,.08)}
+.hero p{font-size:18px;color:#c5d9e7;max-width:560px;margin-bottom:27px}
+.trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;color:#e0f5ff;font-size:13px}
+.phone-wrap{min-height:480px;display:flex;justify-content:center;align-items:center;position:relative}
+.phone{
+  width:265px;padding:12px;border:2px solid #28baff;border-radius:38px;
+  background:#020711;box-shadow:0 0 25px rgba(0,186,255,.3),0 25px 80px #000;
+  transform:rotate(2deg);
+}
+.phone:before{content:"";display:block;width:75px;height:13px;background:#19384d;border-radius:20px;margin:0 auto 14px}
+.phone-screen{background:linear-gradient(150deg,#102d46,#030b17);border-radius:25px;padding:19px 15px;min-height:365px}
+.phone-logo{font-size:21px;font-weight:900;margin:12px 0}
+.phone-small{font-size:11px;color:#b7d1e2}
+.phone-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:20px 0}
+.phone-actions span{background:#0a2940;border:1px solid #168bc0;border-radius:9px;text-align:center;padding:10px 2px;font-size:9px;color:#8beaff}
+.phone-check{font-size:12px;margin:13px 0;color:#e1f2fc}
+.phone-check b{color:var(--blue);margin-right:7px}
+.float-note{position:absolute;right:0;top:60px;font-size:18px;font-style:italic;transform:rotate(-8deg)}
+.float-note b{color:var(--blue)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .card{
-  background:linear-gradient(145deg,rgba(9,29,43,.96),rgba(4,17,28,.96));
-  border:1px solid var(--line);border-radius:15px;padding:22px;
-  box-shadow:0 12px 35px rgba(0,0,0,.16);
+  background:linear-gradient(145deg,rgba(9,30,49,.95),rgba(4,14,27,.96));
+  border:1px solid var(--line);border-radius:16px;padding:28px;
+  box-shadow:0 15px 40px rgba(0,0,0,.22);
+  min-height:210px;
 }
-.card-icon{width:43px;height:43px;border:1px solid var(--green);border-radius:13px;display:grid;place-items:center;color:var(--green);font-size:21px;margin-bottom:14px}
+.card:hover{border-color:var(--blue);box-shadow:0 0 22px rgba(0,186,255,.15)}
+.card-icon{
+  width:50px;height:50px;border:1px solid var(--blue);
+  border-radius:14px;display:grid;place-items:center;
+  color:#9beaff;font-size:24px;margin-bottom:18px;
+  box-shadow:0 0 15px rgba(0,186,255,.18);
+}
 .card p{color:var(--muted);font-size:14px}
-.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.service{display:flex;gap:15px;align-items:flex-start}
+.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.service{display:flex;gap:16px;align-items:flex-start}
 .service .card-icon{flex-shrink:0}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:28px}
-.step{position:relative}
-.step-number{width:32px;height:32px;border-radius:50%;background:var(--green);color:#002213;font-weight:900;display:grid;place-items:center;margin-bottom:14px}
-.step p{font-size:13px;color:var(--muted)}
-.price-card{border:1px solid var(--green);border-radius:16px;padding:25px;background:linear-gradient(145deg,#092b2a,#061522);text-align:center}
-.price{font-size:43px;color:var(--green);font-weight:900;margin:8px 0 15px}
-.portfolio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:24px}
-.sample{background:#0a1c29;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.sample-art{height:125px;padding:14px;background:linear-gradient(140deg,#173b48,#07111d);display:flex;align-items:center;justify-content:center}
-.sample-art div{background:#f0f5f6;color:#14232b;width:90%;height:85px;border-radius:7px;padding:9px;font-size:10px;box-shadow:0 5px 20px #000}
-.sample-art strong{display:block;color:#087d54;font-size:13px}
-.sample-info{padding:12px;font-size:12px}
-.testimonial{max-width:600px}
-.quote{font-size:18px;margin:12px 0;color:#dbe8ee}
-.stars-large{color:#ffd34f}
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
-details{background:#071927;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-summary{cursor:pointer;font-weight:700;font-size:14px}
-details p{color:var(--muted);font-size:13px;padding-top:12px}
-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}
-form input,form select,form textarea{
-  width:100%;padding:13px;border-radius:9px;border:1px solid #1a3b4c;
-  background:#061522;color:white;outline:none;
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:35px}
+.step{padding:25px;border-left:1px solid var(--blue);background:rgba(7,25,42,.7);min-height:220px}
+.step-number{width:38px;height:38px;border-radius:50%;background:var(--blue);color:#00111d;font-weight:900;display:grid;place-items:center;margin-bottom:20px;box-shadow:0 0 17px var(--blue)}
+.step p{font-size:14px;color:var(--muted)}
+.price-card{
+  border:1px solid var(--blue);border-radius:18px;padding:35px;
+  background:linear-gradient(145deg,#09223a,#04101d);
+  box-shadow:0 0 25px rgba(0,186,255,.17);
+  text-align:center;max-width:390px;margin:45px auto 0;
 }
-form input:focus,form select:focus,form textarea:focus{border-color:var(--green)}
-form textarea{grid-column:1/-1;min-height:95px;resize:vertical}
-form button{grid-column:1/-1}
-.contact-box{background:#071927;border:1px solid var(--line);border-radius:15px;padding:22px}
-footer{padding:25px 0;color:var(--muted);font-size:12px}
+.price{font-size:52px;color:#8beaff;font-weight:900;text-shadow:0 0 18px rgba(0,186,255,.5);margin:10px 0 20px}
+.portfolio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px;margin-top:30px}
+.sample{background:#071a2a;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.sample-art{height:155px;padding:15px;background:linear-gradient(135deg,#123c5b,#07111f);display:grid;place-items:center}
+.sample-art div{background:#eaf8ff;color:#09233a;width:95%;height:110px;border-radius:8px;padding:12px;font-size:11px;box-shadow:0 0 15px rgba(0,186,255,.3)}
+.sample-art strong{display:block;color:#087ab5;font-size:15px}
+.sample-info{padding:16px;font-size:13px}
+.testimonial{max-width:700px}
+.quote{font-size:19px;color:#e1f4ff;margin:15px 0}
+.stars{color:#8beaff;font-size:19px}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+details{background:#071a2a;border:1px solid var(--line);border-radius:12px;padding:18px}
+summary{cursor:pointer;font-weight:800}
+details p{color:var(--muted);font-size:14px;padding-top:13px;margin:0}
+.contact-box{background:linear-gradient(145deg,#0a2237,#040e1b);border:1px solid var(--blue);border-radius:18px;padding:30px;box-shadow:0 0 25px rgba(0,186,255,.12)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+form input,form select,form textarea{
+  width:100%;padding:15px;border-radius:9px;border:1px solid #24506b;
+  background:#061321;color:white;outline:none;
+}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--blue);box-shadow:0 0 10px rgba(0,186,255,.2)}
+form textarea,form button{grid-column:1/-1}
+form textarea{min-height:120px;resize:vertical}
+footer{padding:38px 0;color:var(--muted);font-size:13px;background:#02060d}
 .footer-row{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
-footer a{margin-left:15px}
-@media(max-width:900px){
- nav{gap:10px}nav a{font-size:11px}
- .hero-grid{gap:15px}
+footer a{margin-left:15px;color:#d9efff}
+
+@media(max-width:950px){
+ nav{gap:9px}nav a{font-size:10px}
+ .hero-grid{gap:20px}
+ .portfolio-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:700px){
- .nav{min-height:62px;flex-wrap:wrap;padding:10px 0}
+ .nav{min-height:68px;flex-wrap:wrap;padding:10px 0}
  .menu-btn{display:block}
- nav{display:none;width:100%;flex-direction:column;align-items:stretch;padding:8px 0 14px}
+ nav{display:none;width:100%;flex-direction:column;align-items:stretch;padding:10px 0}
  nav.open{display:flex}
- nav a{padding:8px;font-size:14px}
+ nav a{padding:9px;font-size:14px;border-bottom:1px solid rgba(0,186,255,.12)}
  .nav>.btn{display:none}
- .hero-grid{grid-template-columns:1fr;padding:55px 0 35px;text-align:center}
+ section{padding:85px 0}
+ .hero{min-height:auto}
+ .hero-grid{grid-template-columns:1fr;padding:70px 0 55px;text-align:center}
  .hero p{margin-left:auto;margin-right:auto}
  .trust{justify-content:center}
- .phone-wrap{min-height:350px}
- .float-note{right:3%;top:15px}
- section{padding:48px 0}
- .about-grid,.contact-grid{grid-template-columns:1fr;gap:25px}
- .feature-grid{grid-template-columns:1fr}
- .services-grid{grid-template-columns:1fr}
+ .phone-wrap{min-height:420px}
+ .float-note{right:0;top:15px}
+ .grid-2{grid-template-columns:1fr}
+ .grid-3{grid-template-columns:1fr}
+ .service-grid{grid-template-columns:1fr}
  .steps{grid-template-columns:1fr 1fr}
  .portfolio-grid{grid-template-columns:1fr 1fr}
  .faq-grid{grid-template-columns:1fr}
  form{grid-template-columns:1fr}
  form textarea,form button{grid-column:1}
 }
+@media(max-width:430px){
+ .steps{grid-template-columns:1fr}
+ .portfolio-grid{grid-template-columns:1fr}
+ .card{min-height:0}
+}
 </style>
 </head>
-<body>
 
+<body>
 <header>
   <div class="container nav">
     <a class="logo" href="#inicio"><span class="logo-mark">N</span>Nexa<b>Perfil</b></a>
-    <button class="menu-btn" id="menuBtn" type="button" aria-label="Abrir menu">☰</button>
+    <button class="menu-btn" id="menuBtn" type="button">☰ Menu</button>
     <nav id="menu">
-      <a href="#inicio">Início</a>
-      <a href="#sobre">Sobre nós</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#beneficios">Benefícios</a>
-      <a href="#como">Como funciona</a>
-      <a href="#portfolio">Portfólio</a>
-      <a href="#depoimentos">Depoimentos</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contato">Contato</a>
+      <a href="#inicio">Início</a><a href="#sobre">Sobre nós</a>
+      <a href="#servicos">Serviços</a><a href="#beneficios">Benefícios</a>
+      <a href="#como">Como funciona</a><a href="#portfolio">Portfólio</a>
+      <a href="#depoimentos">Depoimentos</a><a href="#faq">FAQ</a><a href="#contato">Contato</a>
     </nav>
-    <a class="btn" href="#contato">☏ Quero contratar</a>
+    <a class="btn" href="#contato">Quero contratar</a>
   </div>
 </header>
 
@@ -188,187 +243,150 @@ footer a{margin-left:15px}
   <div class="container hero-grid">
     <div>
       <span class="tag">✦ SERVIÇO DIGITAL · R$100</span>
-      <h1>Deixe o perfil da sua empresa mais <span class="green">organizado e profissional.</span></h1>
-      <p>Uma revisão simples para melhorar a apresentação do seu negócio na internet — sem promessas falsas e sem complicação.</p>
-      <a class="btn" href="#contato">☏ Começar por R$100 →</a>
-      <div class="trust"><span>ϟ Rápido</span><span>♧ Seguro</span><span>⌁ 100% Online</span></div>
+      <h1>Seu negócio merece uma presença <span class="green">digital profissional.</span></h1>
+      <p>Organize as informações da sua empresa, valorize sua apresentação e facilite o contato com seus clientes com a NexaPerfil.</p>
+      <a class="btn" href="#contato">Começar por R$100 →</a>
+      <div class="trust"><span>✦ Atendimento online</span><span>✦ Organização</span><span>✦ Clareza</span></div>
     </div>
     <div class="phone-wrap">
       <div class="phone">
         <div class="phone-screen">
           <div class="phone-logo"><span class="green">N</span> NexaPerfil</div>
-          <div class="stars">5,0 ★★★★★ <span class="phone-small">(exemplo ilustrativo)</span></div>
-          <div class="phone-small">Serviço de marketing digital</div>
-          <div class="phone-actions"><span>☎<br>Ligar</span><span>⌖<br>Rotas</span><span>↗<br>Compartilhar</span><span>▣<br>Salvar</span></div>
-          <p class="phone-check"><b>●</b> Informações atualizadas</p>
-          <p class="phone-check"><b>●</b> Apresentação profissional</p>
-          <p class="phone-check"><b>●</b> Descrição atrativa</p>
-          <p class="phone-check"><b>●</b> Mais clareza para clientes</p>
+          <div class="phone-small">Apresentação digital profissional</div>
+          <div class="phone-actions">
+            <span>☎<br>Ligar</span><span>⌖<br>Rotas</span><span>↗<br>Enviar</span><span>▣<br>Salvar</span>
+          </div>
+          <p class="phone-check"><b>✦</b> Informações organizadas</p>
+          <p class="phone-check"><b>✦</b> Descrição profissional</p>
+          <p class="phone-check"><b>✦</b> Serviços bem apresentados</p>
+          <p class="phone-check"><b>✦</b> Contato facilitado</p>
+          <p class="phone-check"><b>✦</b> Visual mais atrativo</p>
         </div>
       </div>
-      <div class="float-note">Seu negócio<br><b>no topo!</b> ↗</div>
+      <div class="float-note">Destaque sua marca<br><b>com estilo!</b> ↗</div>
     </div>
   </div>
 </section>
 
 <section id="sobre">
-  <div class="container about-grid">
+  <div class="container grid-2">
     <div>
-      <div class="section-label">✦ Sobre nós</div>
-      <h2>Somos a NexaPerfil,<br>e o nosso foco é o seu <span class="green">crescimento.</span></h2>
-      <p class="muted">Ajudamos empresas e profissionais a terem um perfil mais atrativo, organizado e completo na internet. Com um serviço simples, rápido e acessível, você pode apresentar melhor seu negócio.</p>
-      <br><a class="btn btn-outline" href="#servicos">Saiba mais sobre nós →</a>
+      <div class="section-label">01 / Sobre nós</div>
+      <h2>Conheça a <span class="green">NexaPerfil</span></h2>
+      <p class="muted">A NexaPerfil nasceu com a proposta de ajudar pequenos negócios e profissionais a apresentarem melhor seus serviços no ambiente digital.</p>
+      <p class="muted">Nosso foco é organização, clareza e uma comunicação visual que ajude o cliente a entender o que sua empresa oferece.</p>
+      <a class="btn btn-outline" href="#servicos">Conhecer serviços →</a>
     </div>
-    <div class="feature-grid" id="beneficios">
-      <article class="card"><div class="card-icon">♧</div><h3>Mais credibilidade</h3><p>Um perfil bem estruturado ajuda a transmitir confiança para seus clientes.</p></article>
-      <article class="card"><div class="card-icon">⌕</div><h3>Mais visibilidade</h3><p>Informações claras facilitam que as pessoas encontrem seu negócio.</p></article>
-      <article class="card"><div class="card-icon">♙</div><h3>Mais contatos</h3><p>Informações completas ajudam clientes a saber como falar com você.</p></article>
+    <div class="grid-2">
+      <article class="card"><div class="card-icon">✧</div><h3>Nosso objetivo</h3><p>Valorizar a apresentação digital de cada negócio.</p></article>
+      <article class="card"><div class="card-icon">⌖</div><h3>Nossa missão</h3><p>Deixar as informações mais claras e acessíveis.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="beneficios">
+  <div class="container">
+    <div class="section-label">02 / Benefícios</div>
+    <h2>Uma presença digital mais <span class="green">organizada</span></h2>
+    <p class="muted">Uma boa apresentação ajuda as pessoas a compreenderem melhor seu negócio.</p>
+    <div class="grid-3" style="margin-top:30px">
+      <article class="card"><div class="card-icon">◇</div><h3>Mais credibilidade</h3><p>Informações consistentes ajudam a transmitir profissionalismo.</p></article>
+      <article class="card"><div class="card-icon">⌕</div><h3>Mais clareza</h3><p>Clientes entendem com mais facilidade o que você oferece.</p></article>
+      <article class="card"><div class="card-icon">☏</div><h3>Contato facilitado</h3><p>Deixe os caminhos para falar com sua empresa mais evidentes.</p></article>
     </div>
   </div>
 </section>
 
 <section id="servicos">
-  <div class="container about-grid">
-    <div>
-      <div class="section-label">✦ Nossos serviços</div>
-      <h2>O que você recebe</h2>
-      <p class="muted">Um pacote para deixar o perfil da sua empresa do jeito certo, com sugestões para apresentar melhor o seu negócio.</p>
-      <br><a class="btn" href="#contato">Ver todos os serviços →</a>
-    </div>
-    <div class="services-grid">
-      <article class="card service"><div class="card-icon">▤</div><div><h3>Descrição</h3><p>Texto claro e profissional para apresentar sua empresa.</p></div></article>
-      <article class="card service"><div class="card-icon">♧</div><div><h3>Informações</h3><p>Revisão de horário, contato, localização e informações básicas.</p></div></article>
-      <article class="card service"><div class="card-icon">⚒</div><div><h3>Serviços</h3><p>Organização e sugestões para apresentar serviços e produtos melhor.</p></div></article>
-      <article class="card service"><div class="card-icon">▧</div><div><h3>Conteúdo</h3><p>Sugestões de fotos e textos para deixar o perfil mais atrativo.</p></div></article>
+  <div class="container">
+    <div class="section-label">03 / Serviços</div>
+    <h2>Como podemos ajudar?</h2>
+    <p class="muted">O pacote é combinado conforme as necessidades do seu negócio.</p>
+    <div class="service-grid" style="margin-top:30px">
+      <article class="card service"><div class="card-icon">▤</div><div><h3>Descrição profissional</h3><p>Texto claro para apresentar sua empresa, seus diferenciais e serviços.</p></div></article>
+      <article class="card service"><div class="card-icon">⌖</div><div><h3>Informações do negócio</h3><p>Organização de dados como contato, horário e localização.</p></div></article>
+      <article class="card service"><div class="card-icon">▧</div><div><h3>Apresentação visual</h3><p>Sugestões para organizar fotos, imagens e materiais de divulgação.</p></div></article>
+      <article class="card service"><div class="card-icon">✎</div><div><h3>Conteúdo e textos</h3><p>Ajuda na escrita de informações e mensagens para seus clientes.</p></div></article>
+      <article class="card service"><div class="card-icon">◎</div><div><h3>Revisão do perfil</h3><p>Verificação de clareza, consistência e apresentação das informações.</p></div></article>
+      <article class="card service"><div class="card-icon">↗</div><div><h3>Orientação</h3><p>Recomendações para manter seu perfil organizado e atualizado.</p></div></article>
     </div>
   </div>
 </section>
 
 <section id="como">
   <div class="container">
-    <div class="section-label">✦ Como funciona?</div>
-    <h2>É simples, rápido e seguro.</h2>
+    <div class="section-label">04 / Como funciona</div>
+    <h2>Um processo simples, do início ao fim</h2>
+    <p class="muted">Você acompanha as etapas e combina os detalhes antes do início do serviço.</p>
     <div class="steps">
-      <article class="step"><div class="step-number">1</div><h3>Você faz o pedido</h3><p>Preenche o formulário com as informações da sua empresa.</p></article>
-      <article class="step"><div class="step-number">2</div><h3>Analisamos o perfil</h3><p>Revisamos as informações e organizamos sugestões.</p></article>
-      <article class="step"><div class="step-number">3</div><h3>Você aprova</h3><p>Mostramos o resultado e fazemos os ajustes combinados.</p></article>
-      <article class="step"><div class="step-number">4</div><h3>Pronto!</h3><p>Você recebe o material final combinado.</p></article>
+      <article class="step"><div class="step-number">1</div><h3>Entre em contato</h3><p>Conte qual é o seu negócio e o que gostaria de melhorar.</p></article>
+      <article class="step"><div class="step-number">2</div><h3>Alinhamos o serviço</h3><p>Definimos o que será feito, o prazo e as condições.</p></article>
+      <article class="step"><div class="step-number">3</div><h3>Preparação</h3><p>Organizamos o material e apresentamos o resultado para sua revisão.</p></article>
+      <article class="step"><div class="step-number">4</div><h3>Entrega</h3><p>Você recebe o material final conforme o combinado.</p></article>
     </div>
-    <div class="price-card" style="max-width:330px;margin:30px 0 0 auto">
-      <div class="section-label">✦ PACOTE NEXAPERFIL</div>
-      <h3>Tudo isso por apenas</h3>
+    <div class="price-card">
+      <div class="section-label">PACOTE NEXAPERFIL</div>
+      <h3>Apresentação digital</h3>
       <div class="price">R$100</div>
-      <a class="btn" href="#contato">Quero contratar agora →</a>
-      <p class="muted" style="font-size:11px;margin-top:12px">Escopo, prazo e pagamento serão combinados antes da contratação.</p>
+      <p class="muted">O escopo, o prazo e a forma de pagamento são combinados antes da contratação.</p>
+      <a class="btn" href="#contato">Quero contratar →</a>
     </div>
   </div>
 </section>
 
 <section id="portfolio">
   <div class="container">
-    <div class="section-label">✦ Portfólio</div>
+    <div class="section-label">05 / Portfólio</div>
     <h2>Exemplos de apresentação</h2>
-    <p class="muted">Modelos ilustrativos de como as informações de diferentes negócios podem ser organizadas.</p>
+    <p class="muted">Modelos demonstrativos de organização para diferentes tipos de negócio.</p>
     <div class="portfolio-grid">
-      <article class="sample"><div class="sample-art"><div><strong>Loja de Roupas</strong>Moda • Novidades<br>Contato • Horários</div></div><div class="sample-info"><b>Loja de Roupas</b><br><span class="muted">Exemplo ilustrativo</span></div></article>
-      <article class="sample"><div class="sample-art"><div><strong>Salão de Beleza</strong>Beleza • Cuidados<br>Contato • Agenda</div></div><div class="sample-info"><b>Salão de Beleza</b><br><span class="muted">Exemplo ilustrativo</span></div></article>
-      <article class="sample"><div class="sample-art"><div><strong>Restaurante</strong>Cardápio • Endereço<br>Contato • Horários</div></div><div class="sample-info"><b>Restaurante</b><br><span class="muted">Exemplo ilustrativo</span></div></article>
-      <article class="sample"><div class="sample-art"><div><strong>Oficina Mecânica</strong>Serviços • Localização<br>Contato • Horários</div></div><div class="sample-info"><b>Oficina Mecânica</b><br><span class="muted">Exemplo ilustrativo</span></div></article>
+      <article class="sample"><div class="sample-art"><div><strong>LOJA DE ROUPAS</strong>Moda • Novidades<br>Contato • Horários</div></div><div class="sample-info"><b>Comércio</b><p class="muted">Modelo ilustrativo</p></div></article>
+      <article class="sample"><div class="sample-art"><div><strong>SALÃO DE BELEZA</strong>Cuidados • Agenda<br>Contato • Serviços</div></div><div class="sample-info"><b>Beleza e estética</b><p class="muted">Modelo ilustrativo</p></div></article>
+      <article class="sample"><div class="sample-art"><div><strong>RESTAURANTE</strong>Cardápio • Endereço<br>Contato • Horários</div></div><div class="sample-info"><b>Alimentação</b><p class="muted">Modelo ilustrativo</p></div></article>
+      <article class="sample"><div class="sample-art"><div><strong>OFICINA</strong>Serviços • Localização<br>Contato • Horários</div></div><div class="sample-info"><b>Prestação de serviços</b><p class="muted">Modelo ilustrativo</p></div></article>
     </div>
   </div>
 </section>
 
 <section id="depoimentos">
   <div class="container">
-    <div class="section-label">✦ Depoimentos</div>
-    <h2>O que nossos clientes dizem</h2>
+    <div class="section-label">06 / Depoimentos</div>
+    <h2>Experiências de clientes</h2>
     <article class="card testimonial">
-      <div class="stars-large">★★★★★</div>
-      <p class="quote">“Os depoimentos reais dos clientes serão publicados aqui com autorização.”</p>
-      <p class="muted">NexaPerfil — espaço reservado para avaliações verificadas.</p>
+      <div class="stars">★★★★★</div>
+      <p class="quote">Este espaço será atualizado com avaliações reais de clientes, mediante autorização.</p>
+      <p class="muted">A NexaPerfil valoriza opiniões verdadeiras e transparentes.</p>
     </article>
   </div>
 </section>
 
 <section id="faq">
   <div class="container">
-    <div class="section-label">✦ Perguntas frequentes</div>
-    <h2>Tire suas dúvidas</h2>
+    <div class="section-label">07 / FAQ</div>
+    <h2>Perguntas frequentes</h2>
     <div class="faq-grid">
-      <details><summary>Quanto tempo leva para ficar pronto?</summary><p>O prazo será combinado após entendermos o serviço e recebermos as informações necessárias.</p></details>
-      <details><summary>O pagamento é seguro?</summary><p>As condições e a forma de pagamento serão combinadas diretamente antes de começar.</p></details>
-      <details><summary>Preciso fornecer fotos e textos?</summary><p>Se forem necessários para o serviço, combinaremos quais materiais você poderá enviar.</p></details>
-      <details><summary>Posso solicitar alterações depois?</summary><p>Os ajustes incluídos serão combinados antes da contratação.</p></details>
-      <details><summary>Funciona para qualquer tipo de negócio?</summary><p>Atendemos diferentes segmentos, conforme o que for possível realizar no pacote.</p></details>
-      <details><summary>Vocês atendem em todo o Brasil?</summary><p>O atendimento é online. A disponibilidade será confirmada na conversa.</p></details>
+      <details><summary>O que está incluído no serviço?</summary><p>O conteúdo será definido conforme o pacote e combinado antes do início.</p></details>
+      <details><summary>Quanto custa?</summary><p>O pacote apresentado nesta página custa R$100. Confirme o escopo antes de contratar.</p></details>
+      <details><summary>Quanto tempo demora?</summary><p>O prazo depende do material e do serviço combinado.</p></details>
+      <details><summary>Preciso enviar informações?</summary><p>Sim, serão necessárias informações básicas sobre sua empresa e o que deseja apresentar.</p></details>
+      <details><summary>Posso pedir alterações?</summary><p>As condições para ajustes serão definidas antes da contratação.</p></details>
+      <details><summary>O atendimento é online?</summary><p>Sim, o contato inicial e o alinhamento são feitos online.</p></details>
+      <details><summary>Vocês garantem mais clientes?</summary><p>Não. O serviço busca melhorar a apresentação, mas não garante vendas, posições ou resultados específicos.</p></details>
+      <details><summary>Como começo?</summary><p>Preencha o formulário e revise a mensagem que será aberta no WhatsApp.</p></details>
     </div>
   </div>
 </section>
 
 <section id="contato">
-  <div class="container contact-grid">
+  <div class="container grid-2">
     <div>
-      <a class="logo" href="#inicio"><span class="logo-mark">N</span>Nexa<b>Perfil</b></a>
-      <h2 style="margin-top:20px">Vamos transformar seu perfil?</h2>
-      <p class="muted">Conte um pouco sobre seu negócio. A conversa será aberta no WhatsApp para você revisar e enviar o pedido.</p>
+      <div class="section-label">08 / Contato</div>
+      <h2>Vamos conversar sobre seu <span class="green">negócio?</span></h2>
+      <p class="muted">Preencha os dados para iniciar uma conversa com a NexaPerfil. A mensagem será aberta no WhatsApp para você revisar antes de enviar.</p>
+      <div class="card" style="margin-top:25px;min-height:0">
+        <div class="card-icon">☏</div>
+        <h3>Atendimento pelo WhatsApp</h3>
+        <p>Envie seu pedido e combine os detalhes do serviço.</p>
+      </div>
     </div>
-    <div class="contact-box">
-      <div class="section-label">✦ FALE COM A GENTE</div>
-      <h3>Preencha o formulário</h3>
-      <form id="pedido">
-        <input id="nome" placeholder="Nome completo" required>
-        <input id="empresa" placeholder="Nome da empresa" required>
-        <input id="telefone" placeholder="Seu WhatsApp" required>
-        <select id="tipo" required>
-          <option value="">Tipo de negócio</option>
-          <option>Comércio</option><option>Restaurante</option>
-          <option>Beleza e estética</option><option>Prestação de serviços</option>
-          <option>Outro</option>
-        </select>
-        <textarea id="mensagem" placeholder="Conte um pouco sobre o que precisa..."></textarea>
-        <button class="btn" type="submit">Enviar pedido →</button>
-      </form>
-      <p class="muted" style="font-size:11px;margin-top:10px">O envio abre uma conversa no WhatsApp. Você poderá revisar antes de enviar.</p>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container footer-row">
-    <span><span class="green">N</span> NexaPerfil © 2026. Todos os direitos reservados.</span>
-    <span><a href="#inicio">Início</a><a href="#contato">Contato</a></span>
-  </div>
-</footer>
-
-<script>
-const NUMERO_WHATSAPP = "5515996136598";
-
-document.getElementById("menuBtn").addEventListener("click",function(){
-  document.getElementById("menu").classList.toggle("open");
-});
-document.querySelectorAll("#menu a").forEach(function(link){
-  link.addEventListener("click",function(){
-    document.getElementById("menu").classList.remove("open");
-  });
-});
-document.getElementById("pedido").addEventListener("submit",function(e){
-  e.preventDefault();
-  const nome=document.getElementById("nome").value.trim();
-  const empresa=document.getElementById("empresa").value.trim();
-  const telefone=document.getElementById("telefone").value.trim();
-  const tipo=document.getElementById("tipo").value;
-  const mensagem=document.getElementById("mensagem").value.trim();
-  const texto="Olá! Tenho interesse no serviço NexaPerfil.%0A"+
-    "Nome: "+encodeURIComponent(nome)+"%0A"+
-    "Empresa: "+encodeURIComponent(empresa)+"%0A"+
-    "WhatsApp: "+encodeURIComponent(telefone)+"%0A"+
-    "Tipo de negócio: "+encodeURIComponent(tipo)+"%0A"+
-    "Mensagem: "+encodeURIComponent(mensagem);
-  window.open("https://wa.me/"+NUMERO_WHATSAPP+"?text="+texto,"_blank");
-});
-</script>
-</body>
-  </html>
-
-
+    
