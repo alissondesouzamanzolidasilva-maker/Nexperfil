@@ -3,30 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#05070d">
-<meta name="description" content="NexaPerfil — presença digital com identidade, criatividade e tecnologia.">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="NexaPerfil — criatividade, identidade e presença digital.">
 <title>NexaPerfil | Sua presença, sua identidade</title>
 
 <style>
 :root{
-  --bg:#05070d;
-  --panel:#0b1020;
-  --cyan:#42f5ff;
-  --blue:#5577ff;
-  --pink:#ff4de1;
-  --white:#f3f7ff;
-  --muted:#aab6cf;
-  --line:rgba(92,230,255,.22);
-  --glow:0 0 22px rgba(66,245,255,.24);
+  --black:#050505;
+  --panel:#101010;
+  --panel2:#171717;
+  --white:#f7f7f7;
+  --gray:#bdbdbd;
+  --line:rgba(255,255,255,.22);
+  --glow:0 0 22px rgba(255,255,255,.16);
+  --radius:18px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
 body{
   margin:0;
-  background:var(--bg);
   color:var(--white);
+  background:var(--black);
   font-family:Arial,Helvetica,sans-serif;
-  line-height:1.65;
+  line-height:1.7;
   overflow-x:hidden;
 }
 body:before{
@@ -36,9 +35,9 @@ body:before{
   z-index:-2;
   pointer-events:none;
   background:
-    radial-gradient(ellipse at 12% 8%,rgba(40,100,255,.18),transparent 34%),
-    radial-gradient(ellipse at 90% 35%,rgba(255,55,220,.10),transparent 30%),
-    linear-gradient(120deg,#05070d,#070b17 55%,#05070d);
+    radial-gradient(ellipse at 15% 10%,rgba(255,255,255,.08),transparent 32%),
+    radial-gradient(ellipse at 85% 45%,rgba(255,255,255,.05),transparent 30%),
+    #050505;
 }
 body:after{
   content:"";
@@ -46,518 +45,427 @@ body:after{
   inset:-30%;
   z-index:-1;
   pointer-events:none;
-  opacity:.38;
+  opacity:.25;
   background:
-    repeating-linear-gradient(115deg,transparent 0 58px,rgba(66,245,255,.18) 59px,rgba(66,245,255,.18) 61px,transparent 62px 120px),
-    repeating-linear-gradient(25deg,transparent 0 140px,rgba(85,119,255,.15) 141px,rgba(85,119,255,.15) 143px,transparent 144px 230px);
+    repeating-linear-gradient(
+      115deg,
+      transparent 0 58px,
+      rgba(255,255,255,.65) 59px,
+      rgba(255,255,255,.65) 60px,
+      transparent 61px 120px
+    ),
+    repeating-linear-gradient(
+      25deg,
+      transparent 0 150px,
+      rgba(255,255,255,.25) 151px,
+      rgba(255,255,255,.25) 152px,
+      transparent 153px 245px
+    );
 }
 a{color:inherit;text-decoration:none}
 button,input,textarea,select{font:inherit}
 button{cursor:pointer}
+img{max-width:100%}
 .wrap{width:min(1160px,92%);margin:auto}
-
+section{padding:88px 0;position:relative}
+section[id]{scroll-margin-top:85px}
+p{color:var(--gray)}
+h1,h2,h3,h4{line-height:1.15}
+h2{font-size:clamp(2rem,5vw,3.3rem);letter-spacing:-.04em}
+h3{font-size:1.2rem}
+.muted{color:var(--gray)}
+.white{color:white}
+.center{text-align:center}
+.small-text{font-size:.88rem;color:var(--gray)}
+.kicker{
+  display:inline-block;
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:.18em;
+  font-size:.76rem;
+  font-weight:800;
+  border-left:3px solid white;
+  padding-left:10px;
+}
+.section-head{max-width:760px;margin-bottom:36px}
+.section-head h2{margin:12px 0}
+.section-head p{margin:0}
 .topline{
-  height:3px;
-  background:linear-gradient(90deg,var(--blue),var(--cyan),var(--pink),var(--blue));
-  box-shadow:0 0 18px var(--cyan);
-  position:fixed;
-  top:0;
-  left:0;
-  width:0;
-  z-index:100;
+  position:fixed;top:0;left:0;height:3px;width:0;
+  background:white;box-shadow:0 0 15px white;z-index:200;
 }
 header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:rgba(5,7,13,.88);
-  backdrop-filter:blur(16px);
+  position:sticky;top:0;z-index:100;
+  background:rgba(5,5,5,.94);
   border-bottom:1px solid var(--line);
+  backdrop-filter:blur(14px);
 }
 .nav{
-  height:76px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
+  min-height:76px;display:flex;align-items:center;
+  justify-content:space-between;gap:18px;
 }
-.brand{
-  font-weight:900;
-  letter-spacing:.08em;
-  font-size:1.18rem;
-}
-.brand span{
-  color:var(--cyan);
-  text-shadow:var(--glow);
-}
-.navlinks{
-  display:flex;
-  align-items:center;
-  gap:23px;
-  color:var(--muted);
-  font-size:.92rem;
-}
-.navlinks a:hover{color:var(--cyan)}
-.navactions{display:flex;gap:9px;align-items:center}
+.brand{font-weight:950;letter-spacing:.12em;font-size:1.15rem}
+.brand span{color:#aaa}
+.navlinks{display:flex;align-items:center;gap:20px;color:#ccc;font-size:.9rem}
+.navlinks a:hover,.footer-links a:hover{color:white;text-shadow:0 0 12px white}
+.navactions{display:flex;align-items:center;gap:10px}
 .iconbtn{
-  width:43px;
-  height:43px;
-  border:1px solid var(--line);
-  border-radius:13px;
-  background:#0a1222;
-  color:var(--cyan);
-  font-size:1.2rem;
+  width:44px;height:44px;border:1px solid var(--line);
+  border-radius:12px;background:#111;color:white;font-size:1.5rem;
 }
 .menu-panel{
-  display:none;
-  position:absolute;
-  right:4%;
-  top:68px;
-  width:min(280px,90vw);
-  padding:12px;
-  background:#0a1020;
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:var(--glow);
+  display:none;position:absolute;right:4%;top:68px;width:min(300px,90vw);
+  padding:12px;background:#111;border:1px solid var(--line);
+  border-radius:15px;box-shadow:var(--glow);
 }
 .menu-panel.open{display:grid}
-.menu-panel a{
-  padding:10px 12px;
-  border-radius:9px;
-  color:var(--muted);
-}
-.menu-panel a:hover{background:#13213a;color:var(--cyan)}
-
+.menu-panel a{padding:11px 12px;border-radius:9px;color:#ddd}
+.menu-panel a:hover{background:#292929;color:white}
 .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-  padding:12px 19px;
-  border-radius:12px;
-  border:1px solid var(--cyan);
-  background:linear-gradient(120deg,rgba(66,245,255,.18),rgba(85,119,255,.18));
-  color:white;
-  font-weight:750;
-  box-shadow:var(--glow);
-  transition:.2s;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:13px 19px;border:1px solid white;border-radius:12px;
+  color:white;background:#171717;font-weight:800;transition:.2s;
 }
-.btn:hover{transform:translateY(-2px);background:rgba(66,245,255,.25)}
-.btn.secondary{
-  border-color:rgba(255,255,255,.2);
-  background:rgba(255,255,255,.04);
-  box-shadow:none;
-}
-.btn.small{padding:9px 13px;font-size:.88rem}
-
-.hero{
-  padding:92px 0 76px;
-  min-height:610px;
-  display:grid;
-  align-items:center;
-}
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.12fr .88fr;
-  gap:45px;
-  align-items:center;
-}
+.btn:hover{transform:translateY(-3px);background:#303030;box-shadow:var(--glow)}
+.btn.secondary{background:transparent;border-color:#777}
+.btn.small{padding:9px 13px;font-size:.86rem}
+.hero{min-height:680px;display:grid;align-items:center;padding:85px 0}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}
 .eyebrow{
-  display:inline-flex;
-  gap:9px;
-  align-items:center;
-  color:var(--cyan);
-  border:1px solid var(--line);
-  border-radius:30px;
-  padding:6px 12px;
-  font-size:.78rem;
-  letter-spacing:.13em;
-  text-transform:uppercase;
-  background:rgba(8,18,35,.7);
+  display:inline-flex;align-items:center;gap:9px;padding:7px 13px;
+  border:1px solid var(--line);border-radius:40px;color:white;
+  background:#111;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
 }
-.dot{
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--cyan);
-  box-shadow:0 0 12px var(--cyan);
-}
-h1{
-  font-size:clamp(2.8rem,7vw,5.6rem);
-  line-height:.99;
-  letter-spacing:-.055em;
-  margin:22px 0;
-}
-h1 em{
-  font-style:normal;
-  color:var(--cyan);
-  text-shadow:0 0 30px rgba(66,245,255,.35);
-}
-.lead{max-width:610px;color:var(--muted);font-size:1.1rem}
+.dot{width:8px;height:8px;background:white;border-radius:50%;box-shadow:0 0 12px white}
+h1{font-size:clamp(3rem,8vw,6.3rem);line-height:.98;letter-spacing:-.07em;margin:24px 0}
+h1 span{color:#aaa;text-shadow:0 0 24px rgba(255,255,255,.35)}
+.hero-text{font-size:1.12rem;max-width:650px}
 .hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.hero-art{
-  min-height:390px;
-  display:grid;
-  place-items:center;
-  position:relative;
-}
+.hero-art{min-height:390px;display:grid;place-items:center;position:relative}
 .orb{
-  width:min(340px,75vw);
-  aspect-ratio:1;
-  border-radius:50%;
-  border:1px solid rgba(66,245,255,.45);
-  background:radial-gradient(circle at 35% 30%,rgba(66,245,255,.25),rgba(85,119,255,.09) 42%,rgba(255,77,225,.07) 65%,transparent 70%);
-  box-shadow:inset 0 0 55px rgba(66,245,255,.13),0 0 70px rgba(66,245,255,.12);
-  display:grid;
-  place-items:center;
-  position:relative;
+  width:min(350px,75vw);aspect-ratio:1;border-radius:50%;
+  border:1px solid rgba(255,255,255,.65);
+  background:radial-gradient(circle at 35% 30%,#555, #181818 45%,#080808 70%);
+  box-shadow:inset 0 0 65px #555,0 0 55px rgba(255,255,255,.13);
+  display:grid;place-items:center;position:relative;
 }
 .orb:before,.orb:after{
-  content:"";
-  position:absolute;
-  inset:12%;
-  border:1px solid rgba(66,245,255,.35);
-  border-radius:50%;
-  transform:rotateX(65deg) rotate(-25deg);
+  content:"";position:absolute;inset:12%;border:1px solid #aaa;
+  border-radius:50%;transform:rotateX(65deg) rotate(-25deg);
 }
-.orb:after{
-  inset:2%;
-  transform:rotateX(65deg) rotate(45deg);
-  border-color:rgba(255,77,225,.32);
-}
-.orb-core{
-  font-size:clamp(4rem,10vw,7rem);
-  font-weight:950;
-  letter-spacing:-.12em;
-  color:white;
-  text-shadow:0 0 25px var(--cyan),0 0 60px var(--blue);
-}
+.orb:after{inset:2%;transform:rotateX(65deg) rotate(45deg);border-color:#fff}
+.orb-core{font-size:clamp(5rem,12vw,8rem);font-weight:950;letter-spacing:-.12em;text-shadow:0 0 25px white}
 .float-tag{
-  position:absolute;
-  padding:9px 13px;
-  border:1px solid var(--line);
-  border-radius:12px;
-  background:rgba(7,14,28,.88);
-  color:var(--cyan);
-  font-size:.8rem;
-  box-shadow:var(--glow);
+  position:absolute;padding:9px 13px;background:#111;border:1px solid #777;
+  border-radius:10px;font-size:.82rem;box-shadow:var(--glow)
 }
-.tag1{top:12%;left:0}
-.tag2{right:-2%;top:30%}
-.tag3{bottom:12%;left:8%}
-
-section{padding:82px 0;position:relative}
-.section-head{max-width:720px;margin-bottom:35px}
-.kicker{
-  color:var(--cyan);
-  font-size:.78rem;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  font-weight:800;
-}
-.section-head h2{
-  font-size:clamp(2rem,4vw,3.25rem);
-  line-height:1.1;
-  margin:10px 0 14px;
-  letter-spacing:-.035em;
-}
-.section-head p{color:var(--muted);margin:0}
+.tag1{top:12%;left:0}.tag2{right:-2%;top:34%}.tag3{bottom:10%;left:8%}
+.band{border-block:1px solid var(--line);background:rgba(255,255,255,.045);padding:28px 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center}
+.stat strong{display:block;font-size:2.1rem;line-height:1.2;color:white}
+.stat span{font-size:.88rem;color:var(--gray)}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
 .card{
-  border:1px solid var(--line);
-  border-radius:19px;
-  padding:24px;
-  background:linear-gradient(145deg,rgba(15,26,48,.88),rgba(7,12,24,.86));
-  box-shadow:0 12px 40px rgba(0,0,0,.18);
-  transition:.22s;
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:25px;background:linear-gradient(145deg,#171717,#0b0b0b);
+  box-shadow:0 12px 35px rgba(0,0,0,.3);transition:.22s;
 }
-.card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(66,245,255,.55);
-  box-shadow:var(--glow);
-}
+.card:hover{transform:translateY(-4px);border-color:#fff;box-shadow:var(--glow)}
+.card p{margin-bottom:0}
 .card-icon{
-  width:48px;height:48px;border-radius:14px;
-  display:grid;place-items:center;
-  background:rgba(66,245,255,.1);
-  border:1px solid var(--line);
-  font-size:1.35rem;
+  width:48px;height:48px;border:1px solid #777;border-radius:13px;
+  display:grid;place-items:center;font-size:1.4rem;background:#222;
 }
-.card h3{margin:17px 0 7px}
-.card p{color:var(--muted);margin:0}
-.band{
-  border-block:1px solid var(--line);
-  background:linear-gradient(90deg,rgba(66,245,255,.06),rgba(85,119,255,.12),rgba(255,77,225,.05));
-  padding:28px 0;
-}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center}
-.stat strong{display:block;font-size:2rem;color:var(--cyan);line-height:1.2}
-.stat span{color:var(--muted);font-size:.9rem}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.card h3{margin:17px 0 8px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
 .visual-panel{
-  min-height:320px;
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:25px;
-  background:linear-gradient(135deg,rgba(66,245,255,.10),rgba(85,119,255,.08)),repeating-linear-gradient(135deg,transparent 0 22px,rgba(66,245,255,.08) 23px 24px,transparent 25px 48px);
+  min-height:340px;border:1px solid #777;border-radius:22px;padding:28px;
+  background:
+    repeating-linear-gradient(135deg,transparent 0 24px,rgba(255,255,255,.11) 25px 26px,transparent 27px 50px),
+    linear-gradient(145deg,#222,#080808);
   display:flex;flex-direction:column;justify-content:space-between;
 }
 .visual-panel .big{
-  font-size:clamp(3rem,8vw,5.8rem);
-  font-weight:950;line-height:1;
-  color:transparent;-webkit-text-stroke:1px var(--cyan);
-  text-shadow:0 0 25px rgba(66,245,255,.25);
+  font-size:clamp(3.4rem,8vw,6rem);font-weight:950;line-height:.95;
+  color:transparent;-webkit-text-stroke:1px white;
 }
-.checklist{list-style:none;padding:0;margin:20px 0}
-.checklist li{padding:9px 0;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.07)}
-.checklist li:before{content:"✦";color:var(--cyan);margin-right:10px}
+.checklist{list-style:none;padding:0;margin:22px 0}
+.checklist li{padding:11px 0;border-bottom:1px solid #333;color:#ddd}
+.checklist li:before{content:"✦";margin-right:11px;color:white}
 .steps{counter-reset:step}
-.step{display:flex;gap:17px;padding:20px 0;border-bottom:1px solid var(--line)}
-.step:before{counter-increment:step;content:"0" counter(step);font-weight:900;color:var(--cyan);font-size:1.35rem}
-.step h3{margin:0 0 5px}
-.step p{margin:0;color:var(--muted)}
-.project-card{min-height:210px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}
-.project-card:after{
-  content:"";position:absolute;width:160px;height:160px;border:1px solid rgba(66,245,255,.25);
-  border-radius:50%;right:-55px;top:-55px;box-shadow:0 0 35px rgba(66,245,255,.12)
-}
-.project-card .label{color:var(--cyan);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
-.project-card a{color:var(--cyan);font-weight:700}
-.quote{font-size:2rem;color:var(--cyan);line-height:1}
-.faq-list{display:grid;gap:11px}
-.faq{border:1px solid var(--line);border-radius:14px;background:rgba(10,17,32,.8);overflow:hidden}
+.step{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid #333}
+.step:before{counter-increment:step;content:"0" counter(step);font-weight:950;font-size:1.4rem}
+.step h3{margin:0 0 6px}
+.step p{margin:0}
+.project-card{min-height:240px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.project-card .label{font-size:.75rem;letter-spacing:.14em;color:#bbb;text-transform:uppercase}
+.project-card a{font-weight:800;text-decoration:underline;text-underline-offset:4px}
+.quote{font-size:3rem;line-height:1}
+.faq-list{display:grid;gap:12px}
+.faq{border:1px solid #444;border-radius:13px;background:#111;overflow:hidden}
 .faq button{
-  width:100%;border:0;background:none;color:var(--white);padding:17px 19px;
-  text-align:left;display:flex;justify-content:space-between;gap:15px;font-weight:750
+  width:100%;padding:18px 20px;background:transparent;border:0;color:white;
+  display:flex;justify-content:space-between;gap:15px;text-align:left;font-weight:800;
 }
-.faq .answer{display:none;padding:0 19px 17px;color:var(--muted)}
+.faq button span{font-size:1.2rem}
+.answer{display:none;padding:0 20px 18px;color:#bbb}
 .faq.active .answer{display:block}
-.faq.active button span:last-child{transform:rotate(45deg);color:var(--cyan)}
-form{display:grid;gap:13px}
-.field{display:grid;gap:6px}
-.field label{font-size:.88rem;color:var(--muted)}
-input,textarea,select{
-  width:100%;border:1px solid var(--line);background:#070d1a;color:white;
-  border-radius:11px;padding:12px 13px;outline:none
-}
-input:focus,textarea:focus,select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(66,245,255,.1)}
-textarea{min-height:115px;resize:vertical}
+.faq.active button span{transform:rotate(45deg)}
 .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:20px}
-.contact-info{display:grid;gap:12px}
-.contact-line{padding:15px;border:1px solid var(--line);border-radius:13px;background:rgba(10,17,32,.7)}
-.contact-line small{display:block;color:var(--muted)}
-.contact-line strong{color:var(--cyan);overflow-wrap:anywhere}
-.notice{font-size:.82rem;color:var(--muted)}
-footer{padding:35px 0;border-top:1px solid var(--line);background:rgba(3,5,10,.7)}
-.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;color:var(--muted);font-size:.9rem}
-.footer-links{display:flex;gap:15px;flex-wrap:wrap}
-.footer-links a:hover{color:var(--cyan)}
+.contact-info{display:grid;gap:13px;align-content:start}
+.contact-line{padding:17px;border:1px solid #444;border-radius:12px;background:#111}
+.contact-line small{display:block;color:#aaa}
+.contact-line strong{display:block;color:white;overflow-wrap:anywhere}
+form{display:grid;gap:14px}
+.field{display:grid;gap:7px}
+.field label{color:#ddd;font-size:.9rem}
+input,textarea,select{
+  width:100%;padding:13px;border:1px solid #555;border-radius:10px;
+  background:#080808;color:white;outline:none;
+}
+input:focus,textarea:focus,select:focus{border-color:white;box-shadow:0 0 0 3px #ffffff18}
+textarea{min-height:130px;resize:vertical}
+.notice{font-size:.82rem;color:#aaa;margin:0}
+footer{padding:38px 0;border-top:1px solid #444;background:#080808}
+.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap;color:#bbb;font-size:.9rem}
 .whatsapp-float{
-  position:fixed;right:18px;bottom:18px;z-index:60;
-  display:flex;align-items:center;gap:9px;padding:12px 17px;
-  border-radius:50px;background:#0c9e62;color:white;font-weight:850;
-  box-shadow:0 8px 30px rgba(0,0,0,.4),0 0 22px rgba(37,211,102,.3);
-  border:1px solid rgba(255,255,255,.25)
+  position:fixed;right:18px;bottom:18px;z-index:150;
+  display:flex;align-items:center;gap:9px;padding:13px 17px;
+  border-radius:50px;background:#168a52;color:white;font-weight:900;
+  border:2px solid white;box-shadow:0 5px 25px #000,0 0 20px #168a5270;
 }
 .whatsapp-float:hover{transform:translateY(-3px)}
-.music-note{
-  position:fixed;left:18px;bottom:18px;z-index:40;
-  border:1px solid var(--line);background:#091326;color:var(--cyan);
-  border-radius:50px;padding:10px 14px;box-shadow:var(--glow);font-size:.85rem
+.music-btn{
+  position:fixed;left:18px;bottom:18px;z-index:150;
+  padding:11px 15px;border-radius:50px;background:#151515;
+  border:1px solid white;color:white;box-shadow:var(--glow);
 }
-.music-note[aria-pressed="true"]{background:#12313a}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s,transform .65s}
+.music-btn[aria-pressed="true"]{background:#444}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
 .reveal.visible{opacity:1;transform:none}
+.backtop{
+  position:fixed;right:18px;bottom:78px;z-index:120;
+  width:42px;height:42px;border-radius:50%;border:1px solid white;
+  background:#111;color:white;display:none;
+}
+.backtop.show{display:block}
 @media(max-width:850px){
- .navlinks{display:none}
- .hero-grid,.split,.contact-grid{grid-template-columns:1fr}
- .hero{padding-top:65px}
- .hero-art{min-height:310px}
- .grid{grid-template-columns:repeat(2,1fr)}
- .stats{grid-template-columns:repeat(2,1fr)}
+  .navlinks{display:none}
+  .hero-grid,.split,.contact-grid{grid-template-columns:1fr}
+  .hero{padding-top:60px}
+  .hero-art{min-height:310px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:560px){
- .nav{height:66px}.brand{font-size:1rem}
- .navactions .btn{display:none}
- .hero{padding:54px 0}
- .hero-art{min-height:260px}
- .grid{grid-template-columns:1fr}
- .stats{gap:22px}
- .footer-row{align-items:flex-start;flex-direction:column}
- section{padding:64px 0}
- .music-note{left:10px;bottom:10px;padding:9px 11px}
- .whatsapp-float{right:10px;bottom:10px;padding:11px 13px}
- .whatsapp-float .wa-label{display:none}
+  section{padding:65px 0}
+  .nav{min-height:66px}
+  .brand{font-size:1rem}
+  .navactions>.btn{display:none}
+  .hero{padding:55px 0}
+  .hero-art{min-height:260px}
+  .grid{grid-template-columns:1fr}
+  .footer-row{align-items:flex-start;flex-direction:column}
+  .music-btn{left:9px;bottom:9px;padding:9px 11px;font-size:.8rem}
+  .whatsapp-float{right:9px;bottom:9px;padding:11px 13px}
+  .whatsapp-float .wa-label{display:none}
+  .backtop{right:12px;bottom:65px}
 }
 @media(prefers-reduced-motion:reduce){
- html{scroll-behavior:auto}
- *,*:before,*:after{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+  *,*:before,*:after{animation:none!important;transition:none!important}
 }
 </style>
 </head>
-<body>
 
+<body>
 <div class="topline" id="progress"></div>
 
 <header>
- <div class="wrap nav">
-  <a class="brand" href="#inicio">NEXA<span>PERFIL</span></a>
-  <nav class="navlinks" aria-label="Navegação principal">
-   <a href="#sobre">Sobre</a>
-   <a href="#servicos">Serviços</a>
-   <a href="#processo">Processo</a>
-   <a href="#projetos">Projetos</a>
-   <a href="#contato">Contato</a>
-  </nav>
-  <div class="navactions">
-   <a class="btn small" href="#contato">Vamos conversar ↗</a>
-   <button class="iconbtn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">⋯</button>
+  <div class="wrap nav">
+    <a class="brand" href="#inicio">NEXA<span>PERFIL</span></a>
+
+    <nav class="navlinks" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="navactions">
+      <a class="btn small" href="#contato">Vamos conversar ↗</a>
+      <button class="iconbtn" id="menuBtn" type="button"
+        aria-label="Abrir menu" aria-expanded="false" aria-controls="menuPanel">⋯</button>
+    </div>
+
+    <nav class="menu-panel" id="menuPanel" aria-label="Menu rápido">
+      <a href="#inicio">⌂ Início</a>
+      <a href="#sobre">Sobre a NexaPerfil</a>
+      <a href="#historia">Nossa história</a>
+      <a href="#servicos">Serviços e possibilidades</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#processo">Como funciona</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#ideias">Ideias e inspiração</a>
+      <a href="#faq">Perguntas frequentes</a>
+      <a href="#contato">Contato</a>
+    </nav>
   </div>
-  <nav class="menu-panel" id="menuPanel" aria-label="Menu rápido">
-   <a href="#inicio">⌂ Início</a>
-   <a href="#sobre">Sobre a NexaPerfil</a>
-   <a href="#servicos">O que fazemos</a>
-   <a href="#diferenciais">Diferenciais</a>
-   <a href="#projetos">Projetos</a>
-   <a href="#faq">Perguntas frequentes</a>
-   <a href="#contato">Fale conosco</a>
-  </nav>
- </div>
 </header>
 
 <main>
 <section class="hero" id="inicio">
- <div class="wrap hero-grid">
-  <div>
-   <div class="eyebrow"><i class="dot"></i> Ideias que ganham presença</div>
-   <h1>Sua presença.<br>Sua <em>identidade.</em></h1>
-   <p class="lead">A NexaPerfil reúne criatividade, organização e tecnologia para transformar ideias em uma presença digital marcante. Um espaço feito para apresentar projetos com personalidade.</p>
-   <div class="hero-buttons">
-    <a class="btn" href="#contato">Começar um projeto <span>↗</span></a>
-    <a class="btn secondary" href="#sobre">Conhecer a NexaPerfil ↓</a>
-   </div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Ideias que ganham presença</div>
+      <h1>Sua presença.<br>Sua <span>identidade.</span></h1>
+      <p class="hero-text">
+        A NexaPerfil é um espaço digital criado para apresentar ideias com personalidade.
+        Aqui, visual, organização e tecnologia trabalham juntos para transformar uma
+        simples visita em uma experiência clara, bonita e fácil de navegar.
+      </p>
+      <div class="hero-buttons">
+        <a class="btn" href="#contato">Começar uma conversa ↗</a>
+        <a class="btn secondary" href="#sobre">Conhecer o site ↓</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-label="Arte abstrata com as letras NX">
+      <div class="orb"><div class="orb-core">N<span style="color:#aaa">X</span></div></div>
+      <span class="float-tag tag1">✦ Criatividade</span>
+      <span class="float-tag tag2">◈ Tecnologia</span>
+      <span class="float-tag tag3">∞ Possibilidades</span>
+    </div>
   </div>
-  <div class="hero-art">
-   <div class="orb"><div class="orb-core">N<span style="color:var(--pink)">X</span></div></div>
-   <span class="float-tag tag1">✦ Criatividade</span>
-   <span class="float-tag tag2">◈ Tecnologia</span>
-   <span class="float-tag tag3">∞ Possibilidades</span>
-  </div>
- </div>
 </section>
 
 <div class="band">
- <div class="wrap stats">
-  <div class="stat"><strong>01</strong><span>Identidade própria</span></div>
-  <div class="stat"><strong>24/7</strong><span>Presença online</span></div>
-  <div class="stat"><strong>∞</strong><span>Novas ideias</span></div>
-  <div class="stat"><strong>100%</strong><span>Feito com intenção</span></div>
- </div>
+  <div class="wrap stats">
+    <div class="stat"><strong>01</strong><span>Identidade própria</span></div>
+    <div class="stat"><strong>24/7</strong><span>Presença online</span></div>
+    <div class="stat"><strong>∞</strong><span>Novas possibilidades</span></div>
+    <div class="stat"><strong>100%</strong><span>Feito com intenção</span></div>
+  </div>
 </div>
 
 <section id="sobre">
- <div class="wrap split">
-  <div class="visual-panel reveal">
-   <div class="kicker">NexaPerfil / visão</div>
-   <div class="big">NEXA<br>FUTURO</div>
-   <div>Uma identidade visual que conecta pontos, pessoas e possibilidades.</div>
+  <div class="wrap split">
+    <div class="visual-panel reveal">
+      <div class="kicker">NexaPerfil / visão</div>
+      <div class="big">NEXA<br>FUTURO</div>
+      <p class="white">Uma identidade visual que conecta pontos, pessoas e possibilidades.</p>
+    </div>
+    <div class="reveal">
+      <div class="kicker">01 — Sobre a NexaPerfil</div>
+      <div class="section-head">
+        <h2>Mais do que uma página: um ponto de partida.</h2>
+        <p>
+          A NexaPerfil nasceu da vontade de criar um ambiente digital moderno,
+          direto e visualmente marcante. Cada parte da página tem uma função:
+          apresentar, explicar, organizar e facilitar o contato.
+        </p>
+      </div>
+      <ul class="checklist">
+        <li>Visual escuro com listras brancas no fundo</li>
+        <li>Conteúdo dividido em partes fáceis de encontrar</li>
+        <li>Experiência adaptada para celular e computador</li>
+        <li>Botões com destinos e funções definidos</li>
+        <li>Contato direto pelo WhatsApp</li>
+        <li>Uma estrutura que pode crescer com novas ideias</li>
+      </ul>
+      <a class="btn secondary" href="#historia">Conhecer nossa proposta ↘</a>
+    </div>
   </div>
-  <div class="reveal">
-   <div class="kicker">01 — Sobre nós</div>
-   <div class="section-head">
-    <h2>Mais do que uma página: um ponto de partida.</h2>
-    <p>A NexaPerfil nasceu da vontade de criar um ambiente digital moderno, direto e visualmente forte. Cada detalhe tem um propósito: facilitar a navegação e deixar a experiência mais interessante.</p>
-   </div>
-   <ul class="checklist">
-    <li>Visual escuro com detalhes neon</li>
-    <li>Conteúdo organizado e fácil de encontrar</li>
-    <li>Experiência adaptada para celular e computador</li>
-    <li>Contato simples, sem complicação</li>
-   </ul>
-   <a class="btn secondary" href="#servicos">Ver possibilidades ↘</a>
+</section>
+
+<section id="historia">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">02 — Nossa história</div>
+      <h2>Uma ideia construída detalhe por detalhe.</h2>
+      <p>
+        Uma presença digital não precisa ser complicada para ser interessante.
+        Ela precisa ter personalidade, conteúdo compreensível e caminhos simples
+        para quem está visitando.
+      </p>
+    </div>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="card-icon">01</div>
+        <h3>O começo</h3>
+        <p>
+          Tudo começa com uma ideia: criar um lugar próprio na internet,
+          com uma identidade visual reconhecível e uma apresentação organizada.
+        </p>
+      </article>
+      <article class="card reveal">
+        <div class="card-icon">02</div>
+        <h3>A construção</h3>
+        <p>
+          Cores, textos, seções e navegação são organizados para que cada pessoa
+          consiga encontrar o que procura sem precisar adivinhar onde clicar.
+        </p>
+      </article>
+      <article class="card reveal">
+        <div class="card-icon">03</div>
+        <h3>A evolução</h3>
+        <p>
+          O site pode receber novas informações, projetos e atualizações.
+          A ideia é que ele continue sendo útil conforme os objetivos mudem.
+        </p>
+      </article>
+    </div>
   </div>
- </div>
 </section>
 
 <section id="servicos">
- <div class="wrap">
-  <div class="section-head reveal">
-   <div class="kicker">02 — O que fazemos</div>
-   <h2>Ideias organizadas para aparecer.</h2>
-   <p>Uma estrutura flexível para apresentar serviços, projetos, informações e formas de contato.</p>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">03 — Serviços e possibilidades</div>
+      <h2>Ideias organizadas para aparecer.</h2>
+      <p>
+        Esta área apresenta possibilidades de uso da NexaPerfil. Os textos são
+        institucionais e podem ser personalizados conforme os projetos reais.
+      </p>
+    </div>
+    <div class="grid">
+      <article class="card reveal"><div class="card-icon">✦</div><h3>Identidade digital</h3><p>Uma apresentação consistente, com cores, linguagem e elementos visuais que ajudam a criar reconhecimento.</p></article>
+      <article class="card reveal"><div class="card-icon">▣</div><h3>Apresentação de projetos</h3><p>Espaço para mostrar trabalhos, explicar propostas e destacar o que torna cada ideia diferente.</p></article>
+      <article class="card reveal"><div class="card-icon">⌘</div><h3>Experiência simples</h3><p>Navegação clara, botões objetivos e conteúdo organizado para quem visita pelo celular ou computador.</p></article>
+      <article class="card reveal"><div class="card-icon">◉</div><h3>Contato direto</h3><p>Atalhos para conversar pelo WhatsApp e preparar uma mensagem com as informações necessárias.</p></article>
+      <article class="card reveal"><div class="card-icon">⚡</div><h3>Visual marcante</h3><p>Contraste, brilho e listras brancas usados para criar personalidade sem atrapalhar a leitura.</p></article>
+      <article class="card reveal"><div class="card-icon">⌁</div><h3>Estrutura flexível</h3><p>Seções que podem ser adaptadas conforme novas ideias, conteúdos e objetivos apareçam.</p></article>
+      <article class="card reveal"><div class="card-icon">◫</div><h3>Conteúdo organizado</h3><p>Informações separadas por assunto, com títulos claros e textos que ajudam a entender cada parte.</p></article>
+      <article class="card reveal"><div class="card-icon">◎</div><h3>Apresentação pessoal</h3><p>Um espaço para explicar quem está por trás de uma ideia e o que deseja construir.</p></article>
+      <article class="card reveal"><div class="card-icon">↗</div><h3>Próximos passos</h3><p>Links e chamadas que ajudam o visitante a sair da curiosidade e chegar ao canal de contato.</p></article>
+    </div>
   </div>
-  <div class="grid">
-   <article class="card reveal"><div class="card-icon">✦</div><h3>Identidade digital</h3><p>Uma apresentação consistente, com cores, linguagem e elementos que ajudam a criar reconhecimento.</p></article>
-   <article class="card reveal"><div class="card-icon">▣</div><h3>Apresentação de projetos</h3><p>Espaço para mostrar trabalhos, explicar propostas e destacar o que torna cada ideia especial.</p></article>
-   <article class="card reveal"><div class="card-icon">⌘</div><h3>Experiência simples</h3><p>Navegação clara, botões objetivos e conteúdo organizado para quem visita pelo celular.</p></article>
-   <article class="card reveal"><div class="card-icon">◉</div><h3>Contato direto</h3><p>Atalhos para conversar pelo WhatsApp e enviar uma mensagem com as informações necessárias.</p></article>
-   <article class="card reveal"><div class="card-icon">⚡</div><h3>Visual marcante</h3><p>Contraste, brilho e listras neon usados para criar personalidade sem atrapalhar a leitura.</p></article>
-   <article class="card reveal"><div class="card-icon">⌁</div><h3>Estrutura flexível</h3><p>Seções que podem ser adaptadas conforme novas ideias, conteúdos e objetivos apareçam.</p></article>
-  </div>
- </div>
 </section>
 
 <section id="diferenciais">
- <div class="wrap">
-  <div class="section-head reveal">
-   <div class="kicker">03 — Diferenciais</div>
-   <h2>Detalhes que fazem a experiência fluir.</h2>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker">04 — Diferenciais</div>
+      <h2>Detalhes que fazem a experiência fluir.</h2>
+      <p>
+        Um site bem apresentado precisa funcionar de maneira previsível.
+        Por isso, cada elemento tem uma finalidade e cada interação deve ser fácil de entender.
+      </p>
+    </div>
+    <div class="grid">
+      <article class="card reveal"><h3>Feito para telas diferentes</h3><p>O layout se ajusta a celulares, tablets e computadores, mantendo os elementos principais acessíveis.</p></article>
+      <article class="card reveal"><h3>Sem excesso de complicação</h3><p>Textos diretos e chamadas claras ajudam cada pessoa a entender o próximo passo.</p></article>
+      <article class="card reveal"><h3>Interações úteis</h3><p>Menu, perguntas frequentes, formulário e controle de trilha sonora têm funções definidas.</p></article>
+      <article class="card reveal"><h3>Identidade em preto e branco</h3><p>O fundo preto e as listras brancas formam a base visual, com brilho discreto nos detalhes.</p></article>
+      <article class="card reveal"><h3>Leitura confortável</h3><p>Espaçamento, contraste e tamanhos de texto ajudam a manter a página agradável durante a navegação.</p></article>
+      <article class="card reveal"><h3>Contato acessível</h3><p>O botão do WhatsApp permanece visível na tela para facilitar o acesso em qualquer seção.</p></article>
   </div>
-  <div class="grid">
-   <article class="card reveal"><h3>Feito para telas diferentes</h3><p>O layout se ajusta a celulares, tablets e computadores, mantendo os elementos principais acessíveis.</p></article>
-   <article class="card reveal"><h3>Sem excesso de complicação</h3><p>Textos diretos e chamadas claras ajudam cada pessoa a entender o próximo passo.</p></article>
-   <article class="card reveal"><h3>Interações úteis</h3><p>Menu, perguntas frequentes, formulário e controle de trilha sonora têm funções definidas.</p></article>
-  </div>
- </div>
-</section>
-
-<section class="band">
- <div class="wrap split">
-  <div><div class="kicker">Uma ideia de cada vez</div><h2 style="margin:8px 0">Clareza no conteúdo.<br><span style="color:var(--cyan)">Personalidade no visual.</span></h2></div>
-  <p style="color:var(--muted);margin:0">O objetivo é que a identidade neon chame atenção sem esconder o que realmente importa: a mensagem, os projetos e o contato.</p>
- </div>
-</section>
-
-<section id="processo">
- <div class="wrap split">
-  <div>
-   <div class="section-head reveal">
-    <div class="kicker">04 — Como funciona</div>
-    <h2>Do primeiro contato à próxima ideia.</h2>
-    <p>Um caminho simples para transformar uma conversa em uma proposta organizada.</p>
-   </div>
-   <div class="steps">
-    <div class="step"><div><h3>Conte sua ideia</h3><p>Explique o que deseja apresentar e qual é o objetivo.</p></div></div>
-    <div class="step"><div><h3>Organizamos as informações</h3><p>Definimos o conteúdo essencial e a melhor forma de mostrar cada parte.</p></div></div>
-    <div class="step"><div><h3>Alinhamos os detalhes</h3><p>Você pode enviar dúvidas, referências e ajustes pelo canal de contato.</p></div></div>
-    <div class="step"><div><h3>Próximos passos</h3><p>Com tudo alinhado, fica mais fácil decidir como seguir.</p></div></div>
-   </div>
-  </div>
-  <div class="visual-panel reveal">
-   <div class="kicker">Fluxo Nexa</div><div class="big">IDEIA<br>→ AÇÃO</div>
-   <p>Uma boa experiência começa com uma conversa clara.</p>
-   <a class="btn" href="#contato">Falar agora ↗</a>
-  </div>
- </div>
-</section>
-
-<section id="projetos">
- <div class="wrap">
-  <div class="section-head reveal">
-   <div class="kicker">05 — Espaço de projetos</div>
-   <h2>Um lugar para suas próximas criações.</h2>
-   <p>Os blocos abaixo são modelos de apresentação. Você pode substituir os textos por projetos reais quando quiser.</p>
-  </div>
-  <div class="grid">
-   <article class="card project-card reveal"><span class="label">Projeto / 01</span><div><h3>Identidade visual</h3><p>Conceito, cores e personalidade em uma apresentação.</p></div><a href="#contato">Conversar sobre este projeto ↗</a></article>
-   <article class="card project-card reveal"><span class="label">Projeto / 02</span><div><h3>Presença online</h3><p>Uma página para reunir informações importantes.</p></div><a href="#contato">Conversar sobre este projeto ↗</a></article>
-   <article class="card project-card reveal"><span class="label">Projeto / 03</span><div><h3>Nova ideia</h3><p>Um espaço aberto para algo que ainda vai nascer.</p></div><a href="#contato">Conversar sobre este projeto ↗</a></article>
-  </div>
-                                                                                       </div>
-
+    
   
-
-
+  
 
   
 
