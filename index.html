@@ -2,105 +2,298 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NexaPerfil — Deixe seu negócio mais profissional</title>
-<meta name="description" content="Organização e melhoria de perfis de empresas por R$100.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexaPerfil | Presença digital profissional</title>
+<meta name="description" content="Transforme a apresentação digital da sua empresa com a NexaPerfil.">
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f6f7fb;color:#172033}
-header{background:#101828;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}
-.logo{font-size:22px;font-weight:800}.btn{display:inline-block;padding:13px 20px;border-radius:10px;text-decoration:none;font-weight:700;cursor:pointer;border:0}
-.btn-main{background:#16a34a;color:white}.btn-light{background:white;color:#101828}
-.hero{padding:70px 6%;background:linear-gradient(135deg,#101828,#243b53);color:white;text-align:center}
-.hero h1{font-size:clamp(34px,6vw,58px);margin:0 auto 18px;max-width:850px}.hero p{font-size:19px;max-width:700px;margin:0 auto 28px;line-height:1.6}
-.container{max-width:1050px;margin:auto;padding:45px 6%}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{background:white;padding:25px;border-radius:16px;box-shadow:0 7px 25px #10182812}.price{font-size:42px;font-weight:800;margin:10px 0}.muted{color:#667085;line-height:1.6}
-h2{font-size:31px;margin-top:0}.tag{display:inline-block;background:#dcfce7;color:#166534;padding:7px 12px;border-radius:999px;font-weight:700;font-size:13px}
-ul{padding-left:20px;line-height:1.9}.order{background:#ecfdf3;border:1px solid #bbf7d0}.field{width:100%;padding:14px;border:1px solid #d0d5dd;border-radius:9px;margin:7px 0 14px;font-size:16px}
-footer{background:#101828;color:#d0d5dd;padding:35px 6%;text-align:center}.small{font-size:13px}
-.ad{background:#fff7ed;border:1px dashed #fdba74;padding:18px;border-radius:14px;text-align:center;margin-top:25px}
-details{background:white;padding:17px;border-radius:10px;margin:9px 0}summary{font-weight:700;cursor:pointer}
-.hero{position:relative;overflow:hidden;background-image:linear-gradient(rgba(5,15,30,.72),rgba(5,15,30,.86)),url('nexaperfil-bg.png');background-size:cover;background-position:center;min-height:520px;display:flex;flex-direction:column;justify-content:center;align-items:center}.hero>*{position:relative;z-index:1}.logo{letter-spacing:-.5px}
-.card{transition:transform .2s ease,box-shadow .2s ease}.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px #10182820}
+:root {
+  --green:#00ed91;
+  --blue:#00baff;
+  --bg:#030b17;
+  --card:#091827;
+  --text:#f4faff;
+  --muted:#a9bacb;
+}
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+.container{width:min(1120px,90%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:#030b17ed;border-bottom:1px solid #183347;backdrop-filter:blur(15px)}
+.nav{min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:25px;font-weight:900;letter-spacing:-1px}
+.logo span{color:var(--green)}
+nav{display:flex;gap:21px;font-size:13px;color:#d2e0eb}
+nav a:hover{color:var(--green)}
+.btn{display:inline-block;padding:14px 22px;border-radius:9px;background:linear-gradient(110deg,#00cf78,#00f0a0);color:#002419;font-weight:800;border:0;cursor:pointer;transition:.2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px #00df8240}
+.outline{display:inline-block;border:1px solid var(--green);color:var(--green);padding:13px 21px;border-radius:9px;font-weight:bold}
+.hero{position:relative;overflow:hidden;min-height:650px;display:flex;align-items:center;background:linear-gradient(90deg,#020916f5 0%,#041426e8 55%,#03101de8 100%),url('nexaperfil-bg-clean.png') center/cover}
+.hero:before{content:"";position:absolute;width:500px;height:500px;border-radius:50%;background:#00df8230;filter:blur(120px);right:5%;top:10%}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:40px;position:relative;z-index:1;padding:75px 0}
+.tag{color:var(--green);font-weight:bold;font-size:12px;letter-spacing:2px}
+h1{font-size:clamp(38px,5.3vw,65px);line-height:1.06;letter-spacing:-2px;margin:22px 0}
+h1 span,h2 span{color:var(--green)}
+.hero p{font-size:17px;line-height:1.8;color:#c0cedb;max-width:550px}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin:28px 0}
+.mini{font-size:12px!important;color:#8ea4b7!important}
+.phone-wrap{display:flex;justify-content:center;position:relative}
+.phone{width:260px;max-width:100%;border:7px solid #243849;border-radius:34px;background:#071522;padding:12px;box-shadow:0 0 0 2px #526b7b,0 25px 90px #000b,0 0 45px #00df8230;transform:rotate(2deg)}
+.phone-top{text-align:center;color:#9db2c4;font-size:10px;padding:5px}
+.phone-screen{border-radius:19px;background:linear-gradient(160deg,#0d2940,#06121e);padding:18px 13px;min-height:390px;text-align:center}
+.avatar{width:65px;height:65px;border-radius:50%;margin:13px auto;background:linear-gradient(135deg,var(--green),var(--blue));display:grid;place-items:center;font-size:27px;color:#002b23;font-weight:bold}
+.phone-screen h3{font-size:17px;margin:8px}
+.phone-screen p{font-size:10px;line-height:1.5;color:#b5c9d8}
+.phone-pill{margin:9px auto;padding:9px;background:#102b3d;border:1px solid #1c5360;border-radius:7px;font-size:10px;color:#d9f9ec}
+.phone-button{background:var(--green);color:#00251a;border-radius:7px;padding:10px;font-size:11px;font-weight:bold;margin-top:14px}
+.float{position:absolute;background:#0b2030;border:1px solid #1c594b;border-radius:12px;padding:12px 15px;color:var(--green);font-size:12px;font-weight:bold;box-shadow:0 10px 30px #0008}
+.float.one{right:0;top:18%}.float.two{left:0;bottom:17%}
+section{padding:85px 0;scroll-margin-top:75px}
+.section-head{text-align:center;max-width:680px;margin:0 auto 38px}
+h2{font-size:clamp(28px,4vw,42px);line-height:1.15;margin:13px 0}
+.section-head p,.muted{color:var(--muted);line-height:1.8}
+.dark{background:#061321;border-top:1px solid #10283a;border-bottom:1px solid #10283a}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{padding:27px;border:1px solid #19384a;border-radius:15px;background:linear-gradient(145deg,#0b2031,#071321);transition:.25s}
+.card:hover{transform:translateY(-5px);border-color:var(--green)}
+.icon{font-size:27px;margin-bottom:18px}
+.card h3{font-size:18px;margin-bottom:11px}
+.card p{color:var(--muted);font-size:14px;line-height:1.75}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.about-panel{border:1px solid #1a3a4b;background:linear-gradient(140deg,#0b2636,#061321);padding:30px;border-radius:18px}
+.check{padding:12px 0;border-bottom:1px solid #183247;color:#d2e2eb;font-size:14px}
+.check:last-child{border:0}
+.check b{color:var(--green);margin-right:10px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.step{padding:23px;border-left:2px solid var(--green);background:#0a1a29}
+.step strong{font-size:30px;color:var(--green)}
+.step h3{font-size:16px;margin:13px 0}
+.step p{font-size:13px;line-height:1.7;color:var(--muted)}
+.price-box{max-width:650px;margin:auto;text-align:center;border:1px solid var(--green);border-radius:20px;padding:42px 25px;background:radial-gradient(ellipse at top,#07513b,#071522 70%);box-shadow:0 0 45px #00df8212}
+.price{font-size:58px;font-weight:900;color:var(--green);margin:17px}
+.price small{font-size:17px}
+.price-box p{color:#bdceda;line-height:1.7;margin-bottom:23px}
+.example{min-height:170px;display:flex;flex-direction:column;justify-content:center}
+.example .icon{font-size:32px}
+.faq details{padding:19px 20px;margin:12px 0;border:1px solid #1b3a4c;border-radius:10px;background:#091827}
+.faq summary{cursor:pointer;font-weight:bold}
+.faq details p{color:var(--muted);line-height:1.7;padding-top:13px;font-size:14px}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:35px}
+form{display:grid;gap:13px}
+input,textarea,select{width:100%;background:#071522;border:1px solid #244256;border-radius:9px;padding:15px;color:white;font-size:15px}
+textarea{min-height:110px;resize:vertical}
+footer{padding:35px 0;border-top:1px solid #193247;text-align:center;color:#9db1c1;font-size:13px}
+footer p{margin:10px}
+footer a{color:var(--green)}
+@media(max-width:850px){
+ .nav{flex-wrap:wrap;padding:14px 0}
+ nav{order:3;width:100%;overflow-x:auto;padding:8px 0}
+ nav a{white-space:nowrap}
+ .nav>.btn{font-size:12px;padding:11px}
+ .hero-grid{grid-template-columns:1fr;text-align:center}
+ .hero p{margin:auto}
+ .actions{justify-content:center}
+ .phone-wrap{margin-top:20px}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .steps{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:550px){
+ section{padding:60px 0}
+ .grid,.about-grid,.contact-grid,.steps{grid-template-columns:1fr}
+ .hero-grid{padding:60px 0}
+ .float.one{right:-5px}.float.two{left:-5px}
+}
 </style>
 </head>
 <body>
-<header><div class="logo">NexaPerfil</div><a class="btn btn-main" href="#pedido">Quero contratar</a></header>
 
-<section class="hero">
-<span class="tag">SERVIÇO DIGITAL • R$100</span>
-<h1>Deixe o perfil da sua empresa mais organizado e profissional.</h1>
-<p>Uma revisão simples para melhorar a apresentação do seu negócio na internet — sem promessas falsas e sem complicação.</p>
-<a class="btn btn-main" href="#pedido">Começar por R$100</a>
+<header>
+<div class="container nav">
+<a class="logo" href="#inicio">Nexa<span>Perfil</span></a>
+<nav>
+<a href="#inicio">Início</a>
+<a href="#sobre">Sobre</a>
+<a href="#servicos">Serviços</a>
+<a href="#processo">Como funciona</a>
+<a href="#portfolio">Portfólio</a>
+<a href="#faq">Dúvidas</a>
+<a href="#contato">Contato</a>
+</nav>
+<a class="btn" href="#contato">Contratar ↗</a>
+</div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+<div class="container hero-grid">
+<div>
+<div class="tag">✦ SUA PRESENÇA DIGITAL COMEÇA AQUI</div>
+<h1>Seu negócio merece uma presença <span>extraordinária.</span></h1>
+<p>Organize e valorize a apresentação digital da sua empresa com a NexaPerfil. Uma solução simples para mostrar ao mundo o que seu negócio tem de melhor.</p>
+<div class="actions">
+<a class="btn" href="#contato">Quero transformar meu perfil ↗</a>
+<a class="outline" href="#servicos">Conhecer serviços</a>
+</div>
+<p class="mini">✦ Atendimento online &nbsp; • &nbsp; Serviço digital &nbsp; • &nbsp; R$100</p>
+</div>
+<div class="phone-wrap">
+<div class="float one">✦ Perfil profissional</div>
+<div class="phone">
+<div class="phone-top">NEXAPERFIL · PRÉVIA</div>
+<div class="phone-screen">
+<div class="avatar">N</div>
+<h3>Sua Empresa</h3>
+<p>Uma apresentação clara, moderna e organizada para o seu negócio.</p>
+<div class="phone-pill">✦ Sobre a empresa</div>
+<div class="phone-pill">▣ Nossos serviços</div>
+<div class="phone-pill">⌖ Localização e contato</div>
+<div class="phone-button">Fale conosco</div>
+</div>
+</div>
+<div class="float two">● Visual organizado</div>
+</div>
+</div>
 </section>
 
-<main class="container">
-<section>
-<h2>O que você recebe</h2>
+<section id="sobre">
+<div class="container about-grid">
+<div>
+<div class="tag">✦ CONHEÇA A NEXAPERFIL</div>
+<h2>Uma nova forma de apresentar seu <span>negócio.</span></h2>
+<p class="muted">A NexaPerfil tem como proposta ajudar empresas e profissionais a organizar sua apresentação digital, destacando informações importantes e facilitando o contato com clientes.</p>
+</div>
+<div class="about-panel">
+<h3>O que buscamos entregar</h3>
+<div class="check"><b>✓</b> Apresentação mais organizada</div>
+<div class="check"><b>✓</b> Informações claras e objetivas</div>
+<div class="check"><b>✓</b> Identidade visual coerente</div>
+<div class="check"><b>✓</b> Facilidade para entrar em contato</div>
+</div>
+</div>
+</section>
+
+<section class="dark" id="servicos">
+<div class="container">
+<div class="section-head">
+<div class="tag">✦ NOSSAS SOLUÇÕES</div>
+<h2>Seu perfil, com mais <span>profissionalismo.</span></h2>
+<p>Conheça os pontos que podem fazer parte do serviço NexaPerfil.</p>
+</div>
 <div class="grid">
-<div class="card"><h3>📝 Descrição</h3><p class="muted">Sugestão de texto mais claro e profissional para apresentar a empresa.</p></div>
-<div class="card"><h3>📍 Informações</h3><p class="muted">Revisão de horário, contato, localização e informações básicas.</p></div>
-<div class="card"><h3>🛠️ Serviços</h3><p class="muted">Organização e sugestões para apresentar serviços/produtos melhor.</p></div>
-<div class="card"><h3>📸 Conteúdo</h3><p class="muted">Sugestões de fotos e textos para deixar o perfil mais atrativo.</p></div>
+<div class="card"><div class="icon">✎</div><h3>Descrição profissional</h3><p>Texto organizado para apresentar seu negócio de forma clara.</p></div>
+<div class="card"><div class="icon">◈</div><h3>Informações essenciais</h3><p>Organização de dados importantes, como contato e funcionamento.</p></div>
+<div class="card"><div class="icon">▣</div><h3>Apresentação de serviços</h3><p>Ajuda para mostrar melhor o que sua empresa oferece.</p></div>
+<div class="card"><div class="icon">✧</div><h3>Identidade visual</h3><p>Sugestões para manter uma aparência mais coerente e organizada.</p></div>
+<div class="card"><div class="icon">⌕</div><h3>Facilidade de contato</h3><p>Informações que ajudam o cliente a encontrar os canais de atendimento.</p></div>
+<div class="card"><div class="icon">↗</div><h3>Orientação</h3><p>Orientações para apresentar melhor sua presença digital.</p></div>
+</div>
 </div>
 </section>
 
-<section style="margin-top:55px">
-<div class="card order">
-<span class="tag">OFERTA</span><h2>Pacote NexaPerfil</h2>
-<div class="price">R$ 100</div>
-<ul><li>Revisão das informações do perfil</li><li>Texto de apresentação sugerido</li><li>Organização dos serviços/produtos</li><li>Lista de melhorias recomendadas</li><li>Entrega digital</li></ul>
-<a class="btn btn-main" href="#pedido">Pedir agora</a>
-<p class="small">Não prometemos primeiro lugar no Google nem resultados específicos de vendas.</p><p><a class="btn btn-main" href="https://wa.me/5515996136598?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20servi%C3%A7o%20NexaPerfil%20de%20R%24100.">💬 Falar pelo WhatsApp</a></p>
+<section id="processo">
+<div class="container">
+<div class="section-head">
+<div class="tag">✦ NOSSO PROCESSO</div>
+<h2>Do primeiro contato à <span>entrega.</span></h2>
+<p>Um processo simples, com comunicação direta em cada etapa.</p>
+</div>
+<div class="steps">
+<div class="step"><strong>01</strong><h3>Contato</h3><p>Você explica o que precisa para sua empresa.</p></div>
+<div class="step"><strong>02</strong><h3>Análise</h3><p>Conferimos as informações e alinhamos o serviço.</p></div>
+<div class="step"><strong>03</strong><h3>Organização</h3><p>Preparamos a apresentação conforme o combinado.</p></div>
+<div class="step"><strong>04</strong><h3>Entrega</h3><p>Você confere o resultado e recebe as orientações acordadas.</p></div>
+</div>
 </div>
 </section>
 
-<div class="ad"><b>📢 Espaço para divulgação</b><br>Este espaço pode receber uma propaganda/parceria quando você tiver um anunciante.</div>
+<section class="dark" id="portfolio">
+<div class="container">
+<div class="section-head">
+<div class="tag">✦ POSSIBILIDADES</div>
+<h2>Uma apresentação para cada <span>negócio.</span></h2>
+<p>Exemplos ilustrativos de segmentos que podem se beneficiar de informações bem organizadas.</p>
+</div>
+<div class="grid">
+<div class="card example"><div class="icon">🛍️</div><h3>Lojas e comércio</h3><p>Apresentação de produtos, atendimento e informações.</p></div>
+<div class="card example"><div class="icon">🍽️</div><h3>Restaurantes</h3><p>Cardápio, localização e canais de contato.</p></div>
+<div class="card example"><div class="icon">✂️</div><h3>Beleza e estética</h3><p>Serviços, horários e formas de agendamento.</p></div>
+</div>
+</div>
+</section>
 
-<section id="pedido" style="margin-top:55px">
-<h2>Faça seu pedido</h2>
-<div class="card">
-<form id="pedidoForm">
-<label>Seu nome</label><input class="field" id="nome" required>
-<label>WhatsApp ou outro contato</label><input class="field" id="contato" required>
-<label>Link do perfil da empresa</label><input class="field" id="link" placeholder="https://..." required>
-<label>O que você quer melhorar?</label><textarea class="field" id="obs" rows="4"></textarea>
-<button class="btn btn-main" type="submit">Enviar pedido</button>
+<section>
+<div class="container">
+<div class="price-box">
+<div class="tag">✦ PACOTE NEXAPERFIL</div>
+<h2>Comece a organizar sua presença digital.</h2>
+<div class="price">R$100<small>,00</small></div>
+<p>Valor do serviço anunciado. O escopo, prazo e forma de pagamento devem ser confirmados antes da contratação.</p>
+<a class="btn" href="#contato">Solicitar atendimento ↗</a>
+</div>
+</div>
+</section>
+
+<section class="dark faq" id="faq">
+<div class="container">
+<div class="section-head">
+<div class="tag">✦ PERGUNTAS FREQUENTES</div>
+<h2>Ficou com alguma <span>dúvida?</span></h2>
+</div>
+<details><summary>Como faço para contratar?</summary><p>Preencha o formulário de contato. Seu pedido será encaminhado para atendimento pelo WhatsApp.</p></details>
+<details><summary>Quanto custa o serviço?</summary><p>O valor anunciado para o pacote é R$100,00. Confirme o que está incluído antes de contratar.</p></details>
+<details><summary>O serviço garante mais clientes?</summary><p>Não há garantia de vendas ou de novos clientes. O objetivo é melhorar a organização e apresentação das informações.</p></details>
+<details><summary>O serviço garante aparecer primeiro no Google?</summary><p>Não. A posição nos resultados de busca depende de diversos fatores e não pode ser garantida.</p></details>
+<details><summary>Como funciona o pagamento?</summary><p>A forma de pagamento será combinada diretamente durante o atendimento, antes do início do serviço.</p></details>
+</div>
+</section>
+
+<section id="contato">
+<div class="container contact-grid">
+<div>
+<div class="tag">✦ FALE COM A GENTE</div>
+<h2>Vamos dar o próximo passo para sua <span>empresa?</span></h2>
+<p class="muted">Conte um pouco sobre seu negócio. Nossa equipe poderá entender sua necessidade e conversar com você sobre o serviço.</p>
+</div>
+<form id="pedido">
+<input id="nome" placeholder="Seu nome" required>
+<input id="empresa" placeholder="Nome da empresa" required>
+<input id="whatsapp" placeholder="Seu telefone / WhatsApp" required>
+<select id="tipo" required>
+<option value="">Qual é o seu segmento?</option>
+<option>Comércio</option><option>Restaurante</option><option>Beleza e estética</option><option>Prestação de serviços</option><option>Outro</option>
+</select>
+<textarea id="mensagem" placeholder="Conte o que você precisa..."></textarea>
+<button class="btn" type="submit">Enviar pedido pelo WhatsApp ↗</button>
+<p class="mini">O envio abrirá uma conversa no WhatsApp para você revisar e enviar.</p>
 </form>
-<p id="resultado" class="muted"></p>
 </div>
-</section>
-
-<section style="margin-top:55px">
-<h2>Perguntas frequentes</h2>
-<details><summary>É garantia de aparecer em primeiro no Google?</summary><p>Não. O serviço organiza e melhora a apresentação do perfil, mas não garante posição no Google.</p></details>
-<details><summary>Como pago?</summary><p>O pagamento pode ser combinado pelo PicPay com o responsável pela venda. Não envie senha, código de acesso ou dados bancários pelo formulário.</p></details>
-<details><summary>Preciso entregar minha senha?</summary><p>Não. Sempre que possível, o trabalho deve ser feito com informações fornecidas pelo cliente, sem compartilhar senhas.</p></details>
-<details><summary>Quanto custa?</summary><p>O pacote apresentado nesta página custa R$100.</p></details>
 </section>
 </main>
 
 <footer>
-<strong>NexaPerfil</strong>
-<p>Organização digital para pequenos negócios.</p>
-<p class="small">As informações desta página são comerciais e não constituem garantia de resultados. Pagamentos e contratos devem ser tratados pelo titular/responsável.</p>
+<div class="container">
+<a class="logo" href="#inicio">Nexa<span>Perfil</span></a>
+<p>Presença digital com propósito.</p>
+<p>© 2026 NexaPerfil. Todos os direitos reservados.</p>
+<a href="#inicio">Voltar ao início ↑</a>
+</div>
 </footer>
 
 <script>
-document.getElementById('pedidoForm').addEventListener('submit', function(e){
+const NUMERO_WHATSAPP = "5515996136598";
+
+document.getElementById("pedido").addEventListener("submit",function(e){
  e.preventDefault();
- const nome=document.getElementById('nome').value;
- const contato=document.getElementById('contato').value;
- const link=document.getElementById('link').value;
- const obs=document.getElementById('obs').value;
- const msg=`Olá! Quero contratar o NexaPerfil por R$100.%0A%0ANome: ${encodeURIComponent(nome)}%0AContato: ${encodeURIComponent(contato)}%0APerfil: ${encodeURIComponent(link)}%0AObservações: ${encodeURIComponent(obs)}`;
- // WhatsApp configurado.
- const numero='5515996136598';
- if(numero==='5515996136598'){
-   document.getElementById('resultado').innerText='Pedido preenchido! Antes de publicar, configure o número de WhatsApp do responsável no arquivo index.html.';
- } else {
-   window.location.href='https://wa.me/'+numero+'?text='+msg;
- }
+ const nome=document.getElementById("nome").value.trim();
+ const empresa=document.getElementById("empresa").value.trim();
+ const telefone=document.getElementById("whatsapp").value.trim();
+ const tipo=document.getElementById("tipo").value;
+ const mensagem=document.getElementById("mensagem").value.trim();
+
+ const texto=`Olá! Tenho interesse no serviço NexaPerfil.%0A%0ANome: ${encodeURIComponent(nome)}%0AEmpresa: ${encodeURIComponent(empresa)}%0AContato: ${encodeURIComponent(telefone)}%0ASegmento: ${encodeURIComponent(tipo)}%0AMensagem: ${encodeURIComponent(mensagem)}`;
+ window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${texto}`,"_blank");
 });
 </script>
 </body>
-</html>
+                                                </html>
+                                                
