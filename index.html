@@ -1,418 +1,793 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NexaPerfil | Presença digital profissional</title>
-<meta name="description" content="Organize e valorize a presença digital da sua empresa com a NexaPerfil.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050711">
+  <title>NexaPerfil | Presença digital</title>
 
-<style>
-:root{
-  --black:#030811;
-  --black2:#061321;
-  --blue:#00baff;
-  --blue2:#167dff;
-  --white:#f4fbff;
-  --muted:#a9c0d2;
-  --line:rgba(0,186,255,.65);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--black);
-  color:var(--white);
-  line-height:1.75;
-  overflow-x:hidden;
-}
-a{color:inherit;text-decoration:none}
-.container{width:min(1120px,91%);margin:auto}
+  <style>
+    :root {
+      --blue: #00aaff;
+      --blue-light: #58d7ff;
+      --white: #f4fbff;
+      --text: #dce8f2;
+      --muted: #9aaabd;
+      --panel: rgba(9, 17, 34, .84);
+      --border: rgba(0, 174, 255, .3);
+    }
 
-/* FUNDO PRETO COM LISTRAS NEON */
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-2;
-  pointer-events:none;
-  background:
-    linear-gradient(115deg,transparent 0 18%,rgba(0,186,255,.10) 18.1%,transparent 18.5% 48%,rgba(255,255,255,.07) 48.1%,transparent 48.4%),
-    linear-gradient(25deg,transparent 0 64%,rgba(0,186,255,.09) 64.1%,transparent 64.5%),
-    radial-gradient(ellipse at 50% 10%,rgba(0,115,190,.22),transparent 55%),
-    var(--black);
-}
-body:after{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  opacity:.22;
-  background:repeating-linear-gradient(
-    135deg,
-    transparent 0 120px,
-    rgba(0,186,255,.16) 121px,
-    transparent 123px,
-    transparent 230px
-  );
-}
-header{
-  position:sticky;top:0;z-index:20;
-  background:rgba(3,8,17,.94);
-  border-bottom:1px solid var(--line);
-  backdrop-filter:blur(15px);
-}
-.nav{
-  min-height:76px;
-  display:flex;align-items:center;
-  justify-content:space-between;gap:18px;
-}
-.logo{font-size:24px;font-weight:900;white-space:nowrap}
-.logo b{color:var(--blue)}
-.logo-mark{color:var(--blue);font-size:30px;margin-right:5px;text-shadow:0 0 16px var(--blue)}
-nav{display:flex;gap:15px;align-items:center}
-nav a{font-size:12px;color:#dcecf6;transition:.2s}
-nav a:hover{color:var(--blue);text-shadow:0 0 10px var(--blue)}
-.menu-btn{
-  display:none;
-  background:transparent;
-  color:white;
-  border:1px solid var(--line);
-  padding:9px 12px;
-  border-radius:8px;
-  box-shadow:0 0 10px rgba(0,186,255,.45);
-}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:13px 21px;border-radius:10px;
-  color:#00111d;font-weight:900;
-  background:linear-gradient(110deg,#168cff,#00d5ff);
-  border:1px solid #8beaff;
-  box-shadow:
-    0 0 10px #00baff,
-    0 0 22px rgba(0,186,255,.85),
-    0 0 38px rgba(0,186,255,.45),
-    inset 0 0 12px rgba(255,255,255,.35);
-  transition:.2s;cursor:pointer;
-}
-.btn:hover{
-  transform:translateY(-3px);
-  box-shadow:
-    0 0 14px #00d5ff,
-    0 0 30px #00baff,
-    0 0 48px rgba(0,186,255,.75);
-}
-.btn-outline{background:transparent;color:var(--blue);border:1px solid var(--blue)}
-section{
-  padding:105px 0;
-  border-bottom:1px solid rgba(0,186,255,.18);
-  position:relative;
-}
-section:before{
-  content:"";
-  position:absolute;
-  top:0;left:0;width:100%;height:1px;
-  background:linear-gradient(90deg,transparent,var(--blue),white,var(--blue),transparent);
-  opacity:.85;
-  box-shadow:0 0 12px rgba(0,186,255,.65);
-}
-.section-label{color:var(--blue);font-size:13px;font-weight:900;letter-spacing:2px;margin-bottom:12px;text-transform:uppercase}
-h1{font-size:clamp(38px,5vw,62px);line-height:1.12;margin-bottom:23px}
-h2{font-size:clamp(29px,3.5vw,42px);line-height:1.2;margin-bottom:20px}
-h3{font-size:20px;line-height:1.35;margin-bottom:12px}
-p{margin-bottom:13px}
-.green{
-  color:var(--blue);
-  text-shadow:0 0 5px #00baff,0 0 12px #00baff,0 0 24px rgba(0,186,255,.9);
-}
-.muted{color:var(--muted)}
-.hero{
-  min-height:690px;
-  display:flex;align-items:center;
-  background:
-    linear-gradient(90deg,rgba(3,8,17,.97),rgba(3,8,17,.72)),
-    radial-gradient(ellipse at 78% 50%,rgba(0,140,255,.22),transparent 55%);
-}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center;padding:75px 0}
-.tag{
-  display:inline-block;color:#aeeeff;border:1px solid var(--blue);
-  border-radius:30px;padding:5px 15px;font-size:12px;
-  margin-bottom:20px;background:rgba(0,186,255,.08);
-  box-shadow:0 0 10px rgba(0,186,255,.45),0 0 24px rgba(0,186,255,.3);
-}
-.hero p{font-size:18px;color:#c5d9e7;max-width:560px;margin-bottom:27px}
-.trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;color:#e0f5ff;font-size:13px}
-.phone-wrap{min-height:480px;display:flex;justify-content:center;align-items:center;position:relative}
-.phone{
-  width:265px;padding:12px;border:2px solid #28baff;border-radius:38px;
-  background:#020711;
-  box-shadow:0 0 10px rgba(0,186,255,.45),0 0 24px rgba(0,186,255,.3),0 25px 80px #000;
-  transform:rotate(2deg);
-}
-.phone:before{content:"";display:block;width:75px;height:13px;background:#19384d;border-radius:20px;margin:0 auto 14px}
-.phone-screen{background:linear-gradient(150deg,#102d46,#030b17);border-radius:25px;padding:19px 15px;min-height:365px}
-.phone-logo{font-size:21px;font-weight:900;margin:12px 0}
-.phone-small{font-size:11px;color:#b7d1e2}
-.phone-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin:20px 0}
-.phone-actions span{background:#0a2940;border:1px solid #168bc0;border-radius:9px;text-align:center;padding:10px 2px;font-size:9px;color:#8beaff}
-.phone-check{font-size:12px;margin:13px 0;color:#e1f2fc}
-.phone-check b{color:var(--blue);margin-right:7px}
-.float-note{position:absolute;right:0;top:60px;font-size:18px;font-style:italic;transform:rotate(-8deg)}
-.float-note b{color:var(--blue)}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{
-  background:linear-gradient(145deg,rgba(9,30,49,.95),rgba(4,14,27,.96));
-  border:1px solid var(--line);border-radius:16px;padding:28px;
-  box-shadow:0 15px 40px rgba(0,0,0,.22);
-  min-height:210px;
-}
-.card:hover{
-  border-color:var(--blue);
-  box-shadow:0 0 12px rgba(0,186,255,.35),0 0 30px rgba(0,186,255,.22);
-}
-.card-icon{
-  width:50px;height:50px;border:1px solid var(--blue);
-  border-radius:14px;display:grid;place-items:center;
-  color:#9beaff;font-size:24px;margin-bottom:18px;
-  box-shadow:0 0 10px rgba(0,186,255,.45),0 0 24px rgba(0,186,255,.3);
-}
-.card p{color:var(--muted);font-size:14px}
-.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}
-.service{display:flex;gap:16px;align-items:flex-start}
-.service .card-icon{flex-shrink:0}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:35px}
-.step{padding:25px;border-left:1px solid var(--blue);background:rgba(7,25,42,.7);min-height:220px}
-.step-number{width:38px;height:38px;border-radius:50%;background:var(--blue);color:#00111d;font-weight:900;display:grid;place-items:center;margin-bottom:20px;box-shadow:0 0 17px var(--blue)}
-.step p{font-size:14px;color:var(--muted)}
-.price-card{
-  border:1px solid var(--blue);border-radius:18px;padding:35px;
-  background:linear-gradient(145deg,#09223a,#04101d);
-  box-shadow:0 0 12px rgba(0,186,255,.35),0 0 30px rgba(0,186,255,.22);
-  text-align:center;max-width:390px;margin:45px auto 0;
-}
-.price{font-size:52px;color:#8beaff;font-weight:900;text-shadow:0 0 18px rgba(0,186,255,.5);margin:10px 0 20px}
-.portfolio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px;margin-top:30px}
-.sample{background:#071a2a;border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.sample-art{height:155px;padding:15px;background:linear-gradient(135deg,#123c5b,#07111f);display:grid;place-items:center}
-.sample-art div{background:#eaf8ff;color:#09233a;width:95%;height:110px;border-radius:8px;padding:12px;font-size:11px;box-shadow:0 0 15px rgba(0,186,255,.3)}
-.sample-art strong{display:block;color:#087ab5;font-size:15px}
-.sample-info{padding:16px;font-size:13px}
-.testimonial{max-width:700px}
-.quote{font-size:19px;color:#e1f4ff;margin:15px 0}
-.stars{color:#8beaff;font-size:19px}
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
-details{background:#071a2a;border:1px solid var(--line);border-radius:12px;padding:18px}
-summary{cursor:pointer;font-weight:800}
-details p{color:var(--muted);font-size:14px;padding-top:13px;margin:0}
-.contact-box{
-  background:linear-gradient(145deg,#0a2237,#040e1b);
-  border:1px solid var(--blue);border-radius:18px;padding:30px;
-  box-shadow:0 0 12px rgba(0,186,255,.35),0 0 30px rgba(0,186,255,.22);
-}
-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
-form input,form select,form textarea{
-  width:100%;padding:15px;border-radius:9px;border:1px solid #24506b;
-  background:#061321;color:white;outline:none;
-}
-form input:focus,form select:focus,form textarea:focus{border-color:var(--blue);box-shadow:0 0 10px rgba(0,186,255,.2)}
-form textarea,form button{grid-column:1/-1}
-form textarea{min-height:120px;resize:vertical}
-footer{padding:38px 0;color:var(--muted);font-size:13px;background:#02060d}
-.footer-row{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
-footer a{margin-left:15px;color:#d9efff}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-@media(max-width:950px){
- nav{gap:9px}nav a{font-size:10px}
- .hero-grid{gap:20px}
- .portfolio-grid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:700px){
- .nav{min-height:68px;flex-wrap:wrap;padding:10px 0}
- .menu-btn{display:block}
- nav{display:none;width:100%;flex-direction:column;align-items:stretch;padding:10px 0}
- nav.open{display:flex}
- nav a{padding:9px;font-size:14px;border-bottom:1px solid rgba(0,186,255,.12)}
- .nav>.btn{display:none}
- section{padding:85px 0}
- .hero{min-height:auto}
- .hero-grid{grid-template-columns:1fr;padding:70px 0 55px;text-align:center}
- .hero p{margin-left:auto;margin-right:auto}
- .trust{justify-content:center}
- .phone-wrap{min-height:420px}
- .float-note{right:0;top:15px}
- .grid-2{grid-template-columns:1fr}
- .grid-3{grid-template-columns:1fr}
- .service-grid{grid-template-columns:1fr}
- .steps{grid-template-columns:1fr 1fr}
- .portfolio-grid{grid-template-columns:1fr 1fr}
- .faq-grid{grid-template-columns:1fr}
- form{grid-template-columns:1fr}
- form textarea,form button{grid-column:1}
-}
-@media(max-width:430px){
- .steps{grid-template-columns:1fr}
- .portfolio-grid{grid-template-columns:1fr}
- .card{min-height:0}
-}
-</style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #050711;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* FUNDO COM LISTRAS BRANCAS E AZUIS NEON */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(0, 105, 190, .2), transparent 48%),
+        linear-gradient(120deg, #050711, #080d1b 50%, #03050c);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -30%;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .9;
+      background:
+        linear-gradient(112deg, transparent 0 17%, rgba(0, 174, 255, .0) 17.2%, rgba(0, 174, 255, .75) 17.35%, rgba(0, 174, 255, .0) 17.55%, transparent 17.8% 34%, rgba(255,255,255,.0) 34.2%, rgba(255,255,255,.8) 34.35%, rgba(255,255,255,.0) 34.55%, transparent 34.8% 61%, rgba(0,174,255,.0) 61.2%, rgba(0,174,255,.7) 61.35%, rgba(0,174,255,.0) 61.55%, transparent 61.8% 78%, rgba(255,255,255,.0) 78.2%, rgba(255,255,255,.65) 78.35%, rgba(255,255,255,.0) 78.55%, transparent 78.8%);
+      filter: drop-shadow(0 0 8px #00aaff) drop-shadow(0 0 18px #00aaff);
+      animation: linhas 18s linear infinite alternate;
+    }
+
+    @keyframes linhas {
+      from { transform: translate3d(-1%, -1%, 0); }
+      to { transform: translate3d(1%, 1%, 0); }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea, select {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    .neon-text {
+      color: var(--blue-light);
+      text-shadow: 0 0 10px rgba(0, 174, 255, .7);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(4, 7, 16, .88);
+      border-bottom: 1px solid rgba(0, 174, 255, .28);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.55rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: white;
+    }
+
+    .logo span {
+      color: var(--blue-light);
+      text-shadow: 0 0 12px var(--blue);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    nav a {
+      color: #d8e7f5;
+      font-size: .94rem;
+      transition: .2s;
+    }
+
+    nav a:hover {
+      color: var(--blue-light);
+      text-shadow: 0 0 10px var(--blue);
+    }
+
+    .menu-btn {
+      display: none;
+      border: 1px solid var(--border);
+      color: white;
+      background: rgba(0, 174, 255, .1);
+      padding: 9px 13px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .music-btn {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 30;
+      border: 1px solid rgba(255,255,255,.65);
+      color: white;
+      background: rgba(0, 104, 170, .9);
+      box-shadow: 0 0 14px rgba(0,174,255,.7);
+      border-radius: 30px;
+      padding: 11px 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .music-btn:hover {
+      background: #087fc0;
+      box-shadow: 0 0 22px rgba(0,174,255,.95);
+    }
+
+    section {
+      padding: 88px 0;
+      scroll-margin-top: 76px;
+    }
+
+    .hero {
+      min-height: 670px;
+      display: flex;
+      align-items: center;
+      padding: 85px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--blue-light);
+      border: 1px solid rgba(0,174,255,.45);
+      background: rgba(0,174,255,.08);
+      border-radius: 30px;
+      padding: 7px 13px;
+      font-size: .8rem;
+      letter-spacing: 1px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      color: white;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      line-height: 1.04;
+      margin-bottom: 24px;
+      letter-spacing: -2px;
+    }
+
+    h2 {
+      color: white;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      color: white;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .hero p, .section-intro {
+      color: var(--muted);
+      max-width: 650px;
+      font-size: 1.06rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      padding: 13px 20px;
+      font-weight: bold;
+      transition: .2s;
+      cursor: pointer;
+      border: 1px solid var(--blue);
+    }
+
+    .btn-primary {
+      color: #00101b;
+      background: var(--blue-light);
+      box-shadow: 0 0 18px rgba(0,174,255,.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 27px rgba(0,174,255,.8);
+    }
+
+    .btn-outline {
+      color: white;
+      background: rgba(255,255,255,.04);
+    }
+
+    .btn-outline:hover {
+      background: rgba(0,174,255,.15);
+    }
+
+    .visual {
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .phone {
+      width: min(270px, 80%);
+      height: 430px;
+      border: 3px solid #dff8ff;
+      border-radius: 36px;
+      padding: 12px;
+      background: linear-gradient(145deg, #101d34, #030711);
+      box-shadow: 0 0 20px #00aaff, 0 0 60px rgba(0,174,255,.28);
+      transform: rotate(5deg);
+    }
+
+    .phone-screen {
+      height: 100%;
+      border-radius: 25px;
+      background:
+        radial-gradient(circle at 50% 15%, rgba(0,174,255,.35), transparent 35%),
+        linear-gradient(160deg, #101d33, #03060e);
+      padding: 28px 17px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    .phone-circle {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      border: 2px solid var(--blue-light);
+      box-shadow: 0 0 22px var(--blue);
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .phone-screen strong {
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .phone-screen small {
+      color: #a9c8df;
+      margin: 8px 0 22px;
+    }
+
+    .phone-line {
+      height: 9px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, var(--blue), rgba(255,255,255,.7));
+      margin: 7px 0;
+      opacity: .8;
+    }
+
+    .phone-line:nth-child(2) { width: 90%; }
+    .phone-line:nth-child(3) { width: 65%; }
+    .phone-line:nth-child(4) { width: 78%; }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-heading .section-intro {
+      margin: 0 auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.2);
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--blue-light);
+      box-shadow: 0 0 22px rgba(0,174,255,.18);
+    }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: .96rem;
+    }
+
+    .band {
+      border-top: 1px solid rgba(0,174,255,.25);
+      border-bottom: 1px solid rgba(255,255,255,.2);
+      background: linear-gradient(90deg, rgba(0,174,255,.08), rgba(255,255,255,.035), rgba(0,174,255,.08));
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      counter-reset: etapa;
+    }
+
+    .step {
+      counter-increment: etapa;
+      padding: 25px;
+      border-left: 2px solid var(--blue-light);
+      background: rgba(5,12,25,.75);
+      border-radius: 0 16px 16px 0;
+    }
+
+    .step::before {
+      content: "0" counter(etapa);
+      display: block;
+      color: var(--blue-light);
+      font-size: 1.7rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      text-shadow: 0 0 12px var(--blue);
+    }
+
+    .step p {
+      color: var(--muted);
+    }
+
+    .highlight {
+      border: 1px solid rgba(255,255,255,.55);
+      box-shadow: 0 0 20px rgba(0,174,255,.15), inset 0 0 20px rgba(0,174,255,.04);
+      border-radius: 22px;
+      padding: 35px;
+      background: rgba(5,12,25,.8);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .highlight p {
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(0,174,255,.25);
+      padding: 19px 0;
+    }
+
+    .faq-item summary {
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .faq-item p {
+      color: var(--muted);
+      padding-top: 12px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .contact-info {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 25px;
+    }
+
+    .contact-info p {
+      color: var(--muted);
+      margin: 12px 0;
+    }
+
+    form {
+      display: grid;
+      gap: 13px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 25px;
+    }
+
+    label {
+      color: #d9efff;
+      font-size: .9rem;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      margin-top: 6px;
+      padding: 13px;
+      color: white;
+      background: #070d1b;
+      border: 1px solid rgba(0,174,255,.35);
+      border-radius: 10px;
+      outline: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--blue-light);
+      box-shadow: 0 0 10px rgba(0,174,255,.25);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    select option {
+      background: #070d1b;
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid rgba(0,174,255,.25);
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero-grid, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .visual {
+        min-height: 430px;
+      }
+
+      .cards, .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .highlight {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        min-height: 68px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        padding: 20px 5%;
+        background: rgba(4,7,16,.98);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      nav a {
+        padding: 8px 0;
+      }
+
+      section {
+        padding: 68px 0;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 65px 0;
+      }
+
+      .cards, .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .phone {
+        height: 390px;
+      }
+
+      .music-btn {
+        right: 10px;
+        bottom: 10px;
+        font-size: .82rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<header>
-  <div class="container nav">
-    <a class="logo" href="#inicio"><span class="logo-mark">N</span>Nexa<b>Perfil</b></a>
-    <button class="menu-btn" id="menuBtn" type="button">☰ Menu</button>
-    <nav id="menu">
-      <a href="#inicio">Início</a><a href="#sobre">Sobre nós</a>
-      <a href="#servicos">Serviços</a><a href="#beneficios">Benefícios</a>
-      <a href="#como">Como funciona</a><a href="#portfolio">Portfólio</a>
-      <a href="#depoimentos">Depoimentos</a><a href="#faq">FAQ</a><a href="#contato">Contato</a>
-    </nav>
-    <a class="btn" href="#contato">Quero contratar</a>
-  </div>
-</header>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#inicio">NEXA<span>PERFIL</span></a>
 
-<main>
-<section class="hero" id="inicio">
-  <div class="container hero-grid">
-    <div>
-      <span class="tag">✦ SERVIÇO DIGITAL · R$100</span>
-      <h1>Seu negócio merece uma presença <span class="green">digital profissional.</span></h1>
-      <p>Organize as informações da sua empresa, valorize sua apresentação e facilite o contato com seus clientes com a NexaPerfil.</p>
-      <a class="btn" href="#contato">Começar por R$100 →</a>
-      <div class="trust"><span>✦ Atendimento online</span><span>✦ Organização</span><span>✦ Clareza</span></div>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">
+        ☰ Menu
+      </button>
+
+      <nav id="menu">
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#processo">Como funciona</a>
+        <a href="#duvidas">Dúvidas</a>
+        <a href="#contato">Contato</a>
+      </nav>
     </div>
-    <div class="phone-wrap">
-      <div class="phone">
-        <div class="phone-screen">
-          <div class="phone-logo"><span class="green">N</span> NexaPerfil</div>
-          <div class="phone-small">Apresentação digital profissional</div>
-          <div class="phone-actions">
-            <span>☎<br>Ligar</span><span>⌖<br>Rotas</span><span>↗<br>Enviar</span><span>▣<br>Salvar</span>
+  </header>
+
+  <button class="music-btn" id="musicBtn" type="button">♪ Ativar trilha</button>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">PRESENÇA DIGITAL • DESIGN • CRIATIVIDADE</span>
+          <h1>Sua presença digital com <span class="neon-text">identidade.</span></h1>
+          <p>
+            Uma apresentação moderna, organizada e feita para destacar sua marca.
+            Transforme sua ideia em uma presença digital com visual profissional,
+            navegação simples e personalidade.
+          </p>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="#contato">Quero começar</a>
+            <a class="btn btn-outline" href="#servicos">Conhecer serviços</a>
           </div>
-          <p class="phone-check"><b>✦</b> Informações organizadas</p>
-          <p class="phone-check"><b>✦</b> Descrição profissional</p>
-          <p class="phone-check"><b>✦</b> Serviços bem apresentados</p>
-          <p class="phone-check"><b>✦</b> Contato facilitado</p>
-          <p class="phone-check"><b>✦</b> Visual mais atrativo</p>
+        </div>
+
+        <div class="visual" aria-label="Ilustração de um celular com uma página digital">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="phone-circle">N</div>
+              <strong>NexaPerfil</strong>
+              <small>Sua marca em destaque</small>
+              <div class="phone-line"></div>
+              <div class="phone-line"></div>
+              <div class="phone-line"></div>
+              <div style="margin-top:24px">
+                <span class="btn btn-primary" style="font-size:.75rem;padding:8px 12px">Conheça</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="float-note">Destaque sua marca<br><b>com estilo!</b> ↗</div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="sobre">
-  <div class="container grid-2">
-    <div>
-      <div class="section-label">01 / Sobre nós</div>
-      <h2>Conheça a <span class="green">NexaPerfil</span></h2>
-      <p class="muted">A NexaPerfil nasceu com a proposta de ajudar pequenos negócios e profissionais a apresentarem melhor seus serviços no ambiente digital.</p>
-      <p class="muted">Nosso foco é organização, clareza e uma comunicação visual que ajude o cliente a entender o que sua empresa oferece.</p>
-      <a class="btn btn-outline" href="#servicos">Conhecer serviços →</a>
-    </div>
-    <div class="grid-2">
-      <article class="card"><div class="card-icon">✧</div><h3>Nosso objetivo</h3><p>Valorizar a apresentação digital de cada negócio.</p></article>
-      <article class="card"><div class="card-icon">⌖</div><h3>Nossa missão</h3><p>Deixar as informações mais claras e acessíveis.</p></article>
-    </div>
-  </div>
-</section>
+    <section id="servicos" class="band">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">O QUE FAZEMOS</span>
+          <h2>Uma página com a sua <span class="neon-text">cara</span></h2>
+          <p class="section-intro">
+            Organização, visual marcante e informações fáceis de encontrar.
+            Tudo pensado para apresentar seu projeto de um jeito claro.
+          </p>
+        </div>
 
-<section id="beneficios">
-  <div class="container">
-    <div class="section-label">02 / Benefícios</div>
-    <h2>Uma presença digital mais <span class="green">organizada</span></h2>
-    <p class="muted">Uma boa apresentação ajuda as pessoas a compreenderem melhor seu negócio.</p>
-    <div class="grid-3" style="margin-top:30px">
-      <article class="card"><div class="card-icon">◇</div><h3>Mais credibilidade</h3><p>Informações consistentes ajudam a transmitir profissionalismo.</p></article>
-      <article class="card"><div class="card-icon">⌕</div><h3>Mais clareza</h3><p>Clientes entendem com mais facilidade o que você oferece.</p></article>
-      <article class="card"><div class="card-icon">☏</div><h3>Contato facilitado</h3><p>Deixe os caminhos para falar com sua empresa mais evidentes.</p></article>
-    </div>
-  </div>
-</section>
+        <div class="cards">
+          <article class="card">
+            <span class="card-icon">✦</span>
+            <h3>Identidade visual</h3>
+            <p>Uma apresentação com cores, elementos e estilo alinhados à personalidade do seu projeto.</p>
+          </article>
 
-<section id="servicos">
-  <div class="container">
-    <div class="section-label">03 / Serviços</div>
-    <h2>Como podemos ajudar?</h2>
-    <p class="muted">O pacote é combinado conforme as necessidades do seu negócio.</p>
-    <div class="service-grid" style="margin-top:30px">
-      <article class="card service"><div class="card-icon">▤</div><div><h3>Descrição profissional</h3><p>Texto claro para apresentar sua empresa, seus diferenciais e serviços.</p></div></article>
-      <article class="card service"><div class="card-icon">⌖</div><div><h3>Informações do negócio</h3><p>Organização de dados como contato, horário e localização.</p></div></article>
-      <article class="card service"><div class="card-icon">▧</div><div><h3>Apresentação visual</h3><p>Sugestões para organizar fotos, imagens e materiais de divulgação.</p></div></article>
-      <article class="card service"><div class="card-icon">✎</div><div><h3>Conteúdo e textos</h3><p>Ajuda na escrita de informações e mensagens para seus clientes.</p></div></article>
-      <article class="card service"><div class="card-icon">◎</div><div><h3>Revisão do perfil</h3><p>Verificação de clareza, consistência e apresentação das informações.</p></div></article>
-      <article class="card service"><div class="card-icon">↗</div><div><h3>Orientação</h3><p>Recomendações para manter seu perfil organizado e atualizado.</p></div></article>
-    </div>
-  </div>
-</section>
+          <article class="card">
+            <span class="card-icon">▣</span>
+            <h3>Site responsivo</h3>
+            <p>Layout adaptado para celular, tablet e computador, com leitura confortável.</p>
+          </article>
 
-<section id="como">
-  <div class="container">
-    <div class="section-label">04 / Como funciona</div>
-    <h2>Um processo simples, do início ao fim</h2>
-    <p class="muted">Você acompanha as etapas e combina os detalhes antes do início do serviço.</p>
-    <div class="steps">
-      <article class="step"><div class="step-number">1</div><h3>Entre em contato</h3><p>Conte qual é o seu negócio e o que gostaria de melhorar.</p></article>
-      <article class="step"><div class="step-number">2</div><h3>Alinhamos o serviço</h3><p>Definimos o que será feito, o prazo e as condições.</p></article>
-      <article class="step"><div class="step-number">3</div><h3>Preparação</h3><p>Organizamos o material e apresentamos o resultado para sua revisão.</p></article>
-      <article class="step"><div class="step-number">4</div><h3>Entrega</h3><p>Você recebe o material final conforme o combinado.</p></article>
-    </div>
-    <div class="price-card">
-      <div class="section-label">PACOTE NEXAPERFIL</div>
-      <h3>Apresentação digital</h3>
-      <div class="price">R$100</div>
-      <p class="muted">O escopo, o prazo e a forma de pagamento são combinados antes da contratação.</p>
-      <a class="btn" href="#contato">Quero contratar →</a>
-    </div>
-  </div>
-</section>
+          <article class="card">
+            <span class="card-icon">↗</span>
+            <h3>Contato facilitado</h3>
+            <p>Botões e informações organizados para que as pessoas encontrem como falar com você.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<section id="portfolio">
-  <div class="container">
-    <div class="section-label">05 / Portfólio</div>
-    <h2>Exemplos de apresentação</h2>
-    <p class="muted">Modelos demonstrativos de organização para diferentes tipos de negócio.</p>
-    <div class="portfolio-grid">
-      <article class="sample"><div class="sample-art"><div><strong>LOJA DE ROUPAS</strong>Moda • Novidades<br>Contato • Horários</div></div><div class="sample-info"><b>Comércio</b><p class="muted">Modelo ilustrativo</p></div></article>
-      <article class="sample"><div class="sample-art"><div><strong>SALÃO DE BELEZA</strong>Cuidados • Agenda<br>Contato • Serviços</div></div><div class="sample-info"><b>Beleza e estética</b><p class="muted">Modelo ilustrativo</p></div></article>
-      <article class="sample"><div class="sample-art"><div><strong>RESTAURANTE</strong>Cardápio • Endereço<br>Contato • Horários</div></div><div class="sample-info"><b>Alimentação</b><p class="muted">Modelo ilustrativo</p></div></article>
-      <article class="sample"><div class="sample-art"><div><strong>OFICINA</strong>Serviços • Localização<br>Contato • Horários</div></div><div class="sample-info"><b>Prestação de serviços</b><p class="muted">Modelo ilustrativo</p></div></article>
-    </div>
-  </div>
-</section>
+    <section id="diferenciais">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">DETALHES QUE FAZEM DIFERENÇA</span>
+          <h2>Mais do que aparência: <span class="neon-text">experiência</span></h2>
+          <p class="section-intro">
+            Uma boa página precisa ser bonita, mas também simples de entender e usar.
+          </p>
+        </div>
 
-<section id="depoimentos">
-  <div class="container">
-    <div class="section-label">06 / Depoimentos</div>
-    <h2>Experiências de clientes</h2>
-    <article class="card testimonial">
-      <div class="stars">★★★★★</div>
-      <p class="quote">Este espaço será atualizado com avaliações reais de clientes, mediante autorização.</p>
-      <p class="muted">A NexaPerfil valoriza opiniões verdadeiras e transparentes.</p>
-    </article>
-  </div>
-</section>
+        <div class="cards">
+          <article class="card">
+            <span class="card-icon">◉</span>
+            <h3>Visual que chama atenção</h3>
+            <p>Contraste, brilho e elementos bem distribuídos para criar uma identidade marcante.</p>
+          </article>
 
-<section id="faq">
-  <div class="container">
-    <div class="section-label">07 / FAQ</div>
-    <h2>Perguntas frequentes</h2>
-    <div class="faq-grid">
-      <details><summary>O que está incluído no serviço?</summary><p>O conteúdo será definido conforme o pacote e combinado antes do início.</p></details>
-      <details><summary>Quanto custa?</summary><p>O pacote apresentado nesta página custa R$100. Confirme o escopo antes de contratar.</p></details>
-      <details><summary>Quanto tempo demora?</summary><p>O prazo depende do material e do serviço combinado.</p></details>
-      <details><summary>Preciso enviar informações?</summary><p>Sim, serão necessárias informações básicas sobre sua empresa e o que deseja apresentar.</p></details>
-      <details><summary>Posso pedir alterações?</summary><p>As condições para ajustes serão definidas antes da contratação.</p></details>
-      <details><summary>O atendimento é online?</summary><p>Sim, o contato inicial e o alinhamento são feitos online.</p></details>
-      <details><summary>Vocês garantem mais clientes?</summary><p>Não. O serviço busca melhorar a apresentação, mas não garante vendas, posições ou resultados específicos.</p></details>
-      <details><summary>Como começo?</summary><p>Preencha o formulário e revise a mensagem que será aberta no WhatsApp.</p></details>
-    </div>
-  </div>
-</section>
+          <article class="card">
+            <span class="card-icon">⌁</span>
+            <h3>Informações organizadas</h3>
+            <p>Conteúdo separado por seções para o visitante encontrar o que procura sem confusão.</p>
+          </article>
 
-<section id="contato">
-  <div class="container grid-2">
-    <div>
-      <d
+          <article class="card">
+            <span class="card-icon">✧</span>
+            <h3>Feito com propósito</h3>
+            <p>Estrutura planejada de acordo com o objetivo da sua marca, serviço ou projeto.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="processo">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">PASSO A PASSO</span>
+          <h2>Como funciona</h2>
+          <p class="section-intro">Um processo simples para tirar sua ideia do papel.</p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <h3>Você conta sua ideia</h3>
+            <p>Explique o que deseja apresentar, quais informações precisam aparecer e qual estilo imagina.</p>
+          </article>
+
+          <article class="step">
+            <h3>Planejamos a página</h3>
+            <p>Organizamos as seções e definimos uma direção visual para o projeto.</p>
+          </article>
+
+          <article class="step">
+            <h3>Você confere</h3>
+            <p>Apresentamos o resultado para você avaliar e conversar sobre possíveis ajustes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="highlight">
+          <div>
+            <span class="eyebrow">SEU PRÓXIMO PASSO</span>
+            <h2>Vamos dar vida à sua <span class="neon-text">ideia?</span></h2>
+            <p>
+              Conte um pouco sobre o seu projeto. A partir disso, podemos conversar
+              sobre o formato da página e o que faz sentido incluir.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="#contato">Falar sobre meu projeto</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="duvidas">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">PERGUNTAS FREQUENTES</span>
+          <h2>Ficou com alguma dúvida?</h2>
+        </div>
+
+        <div style="max-width:800px;margin:auto">
+          <details class="faq-item">
+            <summary>O site funciona no celular?</summary>
+            <p>Sim. A estrutura é responsiva e se adapta a telas menores, como smartphones.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Posso escolher as cores e o estilo?</summary>
+            <p>Sim. Você pode explicar suas preferências para que a apresentação siga a identidade do seu projeto.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Como faço para pedir informações?</summary>
+            <p>Preencha o formulário no final da página. Ele vai preparar uma mensagem para você enviar pelo WhatsApp.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>A música começa automaticamente?</summary>
+            <p>Não. Para respeitar as configurações do navegador, a trilha começa quando você toca no botão “Ativar trilha”.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">CONTATO</span>
+          <h2>Conte sua ideia para a <span class="neon-text">NexaPerfil</span></h2>
+          <p class="section-intro">Preencha os campos e envie sua mensagem pelo WhatsApp.</p>
+        </div>
+
+   
+
+ 
