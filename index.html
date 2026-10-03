@@ -1,793 +1,1110 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050711">
-  <title>NexaPerfil | Presença digital</title>
-
-  <style>
-    :root {
-      --blue: #00aaff;
-      --blue-light: #58d7ff;
-      --white: #f4fbff;
-      --text: #dce8f2;
-      --muted: #9aaabd;
-      --panel: rgba(9, 17, 34, .84);
-      --border: rgba(0, 174, 255, .3);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background: #050711;
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    /* FUNDO COM LISTRAS BRANCAS E AZUIS NEON */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(0, 105, 190, .2), transparent 48%),
-        linear-gradient(120deg, #050711, #080d1b 50%, #03050c);
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: -30%;
-      z-index: -1;
-      pointer-events: none;
-      opacity: .9;
-      background:
-        linear-gradient(112deg, transparent 0 17%, rgba(0, 174, 255, .0) 17.2%, rgba(0, 174, 255, .75) 17.35%, rgba(0, 174, 255, .0) 17.55%, transparent 17.8% 34%, rgba(255,255,255,.0) 34.2%, rgba(255,255,255,.8) 34.35%, rgba(255,255,255,.0) 34.55%, transparent 34.8% 61%, rgba(0,174,255,.0) 61.2%, rgba(0,174,255,.7) 61.35%, rgba(0,174,255,.0) 61.55%, transparent 61.8% 78%, rgba(255,255,255,.0) 78.2%, rgba(255,255,255,.65) 78.35%, rgba(255,255,255,.0) 78.55%, transparent 78.8%);
-      filter: drop-shadow(0 0 8px #00aaff) drop-shadow(0 0 18px #00aaff);
-      animation: linhas 18s linear infinite alternate;
-    }
-
-    @keyframes linhas {
-      from { transform: translate3d(-1%, -1%, 0); }
-      to { transform: translate3d(1%, 1%, 0); }
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, input, textarea, select {
-      font: inherit;
-    }
-
-    .container {
-      width: min(1120px, 90%);
-      margin: auto;
-    }
-
-    .neon-text {
-      color: var(--blue-light);
-      text-shadow: 0 0 10px rgba(0, 174, 255, .7);
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(4, 7, 16, .88);
-      border-bottom: 1px solid rgba(0, 174, 255, .28);
-      backdrop-filter: blur(14px);
-    }
-
-    .nav {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 1.55rem;
-      font-weight: 900;
-      letter-spacing: 1px;
-      color: white;
-    }
-
-    .logo span {
-      color: var(--blue-light);
-      text-shadow: 0 0 12px var(--blue);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    nav a {
-      color: #d8e7f5;
-      font-size: .94rem;
-      transition: .2s;
-    }
-
-    nav a:hover {
-      color: var(--blue-light);
-      text-shadow: 0 0 10px var(--blue);
-    }
-
-    .menu-btn {
-      display: none;
-      border: 1px solid var(--border);
-      color: white;
-      background: rgba(0, 174, 255, .1);
-      padding: 9px 13px;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .music-btn {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 30;
-      border: 1px solid rgba(255,255,255,.65);
-      color: white;
-      background: rgba(0, 104, 170, .9);
-      box-shadow: 0 0 14px rgba(0,174,255,.7);
-      border-radius: 30px;
-      padding: 11px 16px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .music-btn:hover {
-      background: #087fc0;
-      box-shadow: 0 0 22px rgba(0,174,255,.95);
-    }
-
-    section {
-      padding: 88px 0;
-      scroll-margin-top: 76px;
-    }
-
-    .hero {
-      min-height: 670px;
-      display: flex;
-      align-items: center;
-      padding: 85px 0;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 45px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      color: var(--blue-light);
-      border: 1px solid rgba(0,174,255,.45);
-      background: rgba(0,174,255,.08);
-      border-radius: 30px;
-      padding: 7px 13px;
-      font-size: .8rem;
-      letter-spacing: 1px;
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      color: white;
-      font-size: clamp(2.6rem, 6vw, 5rem);
-      line-height: 1.04;
-      margin-bottom: 24px;
-      letter-spacing: -2px;
-    }
-
-    h2 {
-      color: white;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-
-    h3 {
-      color: white;
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-    }
-
-    .hero p, .section-intro {
-      color: var(--muted);
-      max-width: 650px;
-      font-size: 1.06rem;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      padding: 13px 20px;
-      font-weight: bold;
-      transition: .2s;
-      cursor: pointer;
-      border: 1px solid var(--blue);
-    }
-
-    .btn-primary {
-      color: #00101b;
-      background: var(--blue-light);
-      box-shadow: 0 0 18px rgba(0,174,255,.45);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 27px rgba(0,174,255,.8);
-    }
-
-    .btn-outline {
-      color: white;
-      background: rgba(255,255,255,.04);
-    }
-
-    .btn-outline:hover {
-      background: rgba(0,174,255,.15);
-    }
-
-    .visual {
-      min-height: 390px;
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-
-    .phone {
-      width: min(270px, 80%);
-      height: 430px;
-      border: 3px solid #dff8ff;
-      border-radius: 36px;
-      padding: 12px;
-      background: linear-gradient(145deg, #101d34, #030711);
-      box-shadow: 0 0 20px #00aaff, 0 0 60px rgba(0,174,255,.28);
-      transform: rotate(5deg);
-    }
-
-    .phone-screen {
-      height: 100%;
-      border-radius: 25px;
-      background:
-        radial-gradient(circle at 50% 15%, rgba(0,174,255,.35), transparent 35%),
-        linear-gradient(160deg, #101d33, #03060e);
-      padding: 28px 17px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border: 1px solid rgba(255,255,255,.18);
-    }
-
-    .phone-circle {
-      width: 75px;
-      height: 75px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      border: 2px solid var(--blue-light);
-      box-shadow: 0 0 22px var(--blue);
-      display: grid;
-      place-items: center;
-      font-size: 2rem;
-      color: white;
-    }
-
-    .phone-screen strong {
-      color: white;
-      font-size: 1.2rem;
-    }
-
-    .phone-screen small {
-      color: #a9c8df;
-      margin: 8px 0 22px;
-    }
-
-    .phone-line {
-      height: 9px;
-      border-radius: 20px;
-      background: linear-gradient(90deg, var(--blue), rgba(255,255,255,.7));
-      margin: 7px 0;
-      opacity: .8;
-    }
-
-    .phone-line:nth-child(2) { width: 90%; }
-    .phone-line:nth-child(3) { width: 65%; }
-    .phone-line:nth-child(4) { width: 78%; }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 42px;
-    }
-
-    .section-heading .section-intro {
-      margin: 0 auto;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 25px;
-      box-shadow: 0 10px 35px rgba(0,0,0,.2);
-      transition: .25s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: var(--blue-light);
-      box-shadow: 0 0 22px rgba(0,174,255,.18);
-    }
-
-    .card-icon {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      display: block;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: .96rem;
-    }
-
-    .band {
-      border-top: 1px solid rgba(0,174,255,.25);
-      border-bottom: 1px solid rgba(255,255,255,.2);
-      background: linear-gradient(90deg, rgba(0,174,255,.08), rgba(255,255,255,.035), rgba(0,174,255,.08));
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      counter-reset: etapa;
-    }
-
-    .step {
-      counter-increment: etapa;
-      padding: 25px;
-      border-left: 2px solid var(--blue-light);
-      background: rgba(5,12,25,.75);
-      border-radius: 0 16px 16px 0;
-    }
-
-    .step::before {
-      content: "0" counter(etapa);
-      display: block;
-      color: var(--blue-light);
-      font-size: 1.7rem;
-      font-weight: 900;
-      margin-bottom: 12px;
-      text-shadow: 0 0 12px var(--blue);
-    }
-
-    .step p {
-      color: var(--muted);
-    }
-
-    .highlight {
-      border: 1px solid rgba(255,255,255,.55);
-      box-shadow: 0 0 20px rgba(0,174,255,.15), inset 0 0 20px rgba(0,174,255,.04);
-      border-radius: 22px;
-      padding: 35px;
-      background: rgba(5,12,25,.8);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 25px;
-      align-items: center;
-    }
-
-    .highlight p {
-      color: var(--muted);
-      max-width: 680px;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid rgba(0,174,255,.25);
-      padding: 19px 0;
-    }
-
-    .faq-item summary {
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .faq-item p {
-      color: var(--muted);
-      padding-top: 12px;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 30px;
-      align-items: start;
-    }
-
-    .contact-info {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 25px;
-    }
-
-    .contact-info p {
-      color: var(--muted);
-      margin: 12px 0;
-    }
-
-    form {
-      display: grid;
-      gap: 13px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 25px;
-    }
-
-    label {
-      color: #d9efff;
-      font-size: .9rem;
-      font-weight: bold;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      margin-top: 6px;
-      padding: 13px;
-      color: white;
-      background: #070d1b;
-      border: 1px solid rgba(0,174,255,.35);
-      border-radius: 10px;
-      outline: none;
-    }
-
-    input:focus, textarea:focus, select:focus {
-      border-color: var(--blue-light);
-      box-shadow: 0 0 10px rgba(0,174,255,.25);
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    select option {
-      background: #070d1b;
-    }
-
-    footer {
-      padding: 28px 0;
-      border-top: 1px solid rgba(0,174,255,.25);
-      text-align: center;
-      color: var(--muted);
-      font-size: .9rem;
-    }
-
-    @media (max-width: 800px) {
-      .hero-grid, .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .visual {
-        min-height: 430px;
-      }
-
-      .cards, .steps {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .highlight {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .nav {
-        min-height: 68px;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      nav {
-        display: none;
-        position: absolute;
-        top: 68px;
-        left: 0;
-        right: 0;
-        padding: 20px 5%;
-        background: rgba(4,7,16,.98);
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 16px;
-      }
-
-      nav.open {
-        display: flex;
-      }
-
-      nav a {
-        padding: 8px 0;
-      }
-
-      section {
-        padding: 68px 0;
-      }
-
-      .hero {
-        min-height: auto;
-        padding: 65px 0;
-      }
-
-      .cards, .steps {
-        grid-template-columns: 1fr;
-      }
-
-      .phone {
-        height: 390px;
-      }
-
-      .music-btn {
-        right: 10px;
-        bottom: 10px;
-        font-size: .82rem;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030508">
+
+<title>NexaPerfil | Experiências Digitais</title>
+<meta name="description" content="NexaPerfil - Criação de sites e soluções digitais para empresas, profissionais e empreendedores.">
+
+<style>
+:root {
+  --black: #030508;
+  --black2: #080d16;
+  --card: #0b1220;
+  --blue: #0755b8;
+  --blue2: #0b73e8;
+  --neon: #168bff;
+  --white: #ffffff;
+  --muted: #a8b4c7;
+  --border: rgba(11,115,232,.38);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* FUNDO NEON BRANCO */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0px,
+      transparent 115px,
+      rgba(255,255,255,.10) 116px,
+      rgba(255,255,255,.85) 118px,
+      rgba(255,255,255,.12) 120px,
+      transparent 123px,
+      transparent 205px
+    );
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(7,85,184,.18),
+      transparent 55%
+    );
+}
+
+a {
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* MENU LATERAL */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 255px;
+  height: 100vh;
+  padding: 28px 20px;
+  background: rgba(3,5,8,.97);
+  border-right: 1px solid var(--border);
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 5px 0 30px rgba(0,70,170,.12);
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: var(--neon);
+  text-shadow: 0 0 12px rgba(22,139,255,.8);
+}
+
+.logo-sub {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-top: 7px;
+  margin-bottom: 35px;
+}
+
+.menu-title {
+  color: var(--neon);
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #c4cede;
+  font-size: 13px;
+  padding: 13px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  transition: .25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: white;
+  background: rgba(7,85,184,.2);
+  border-color: var(--border);
+  box-shadow: 0 0 15px rgba(7,85,184,.2);
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.sidebar-bottom p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+  margin-bottom: 13px;
+}
+
+/* BOTÕES */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 15px 22px;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: .25s;
+  border: 1px solid var(--blue2);
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: white;
+  box-shadow: 0 0 20px rgba(7,85,184,.25);
+}
+
+.btn-primary:hover {
+  background: var(--blue2);
+  box-shadow: 0 0 25px rgba(11,115,232,.5);
+  transform: translateY(-3px);
+}
+
+.btn-outline {
+  background: rgba(3,5,8,.6);
+  color: white;
+}
+
+.btn-outline:hover {
+  background: rgba(7,85,184,.2);
+}
+
+.btn-whatsapp {
+  background: #087f54;
+  color: white;
+  border-color: #0ce68a;
+}
+
+.btn-whatsapp:hover {
+  background: #06945f;
+}
+
+/* ESTRUTURA */
+
+main {
+  margin-left: 255px;
+}
+
+section {
+  padding: 115px 8%;
+  scroll-margin-top: 80px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.container {
+  max-width: 1050px;
+  margin: auto;
+}
+
+.tag {
+  display: inline-block;
+  color: #368fff;
+  background: rgba(7,85,184,.12);
+  border: 1px solid rgba(22,139,255,.35);
+  border-radius: 30px;
+  padding: 9px 15px;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 23px;
+}
+
+h1 {
+  font-size: clamp(40px,5vw,68px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+  margin-bottom: 28px;
+}
+
+h2 {
+  font-size: clamp(29px,4vw,43px);
+  line-height: 1.15;
+  margin-bottom: 22px;
+}
+
+h3 {
+  font-size: 19px;
+  margin-bottom: 14px;
+}
+
+p {
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.blue {
+  color: var(--neon);
+  text-shadow: 0 0 15px rgba(22,139,255,.45);
+}
+
+/* INÍCIO */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(
+    100deg,
+    rgba(3,5,8,.98),
+    rgba(3,5,8,.76)
+  );
+}
+
+.hero-content {
+  max-width: 850px;
+}
+
+.hero p {
+  max-width: 690px;
+  font-size: 17px;
+  margin-bottom: 32px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.hero-info {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 18px;
+  margin-top: 70px;
+}
+
+.hero-info div {
+  padding: 20px;
+  background: rgba(11,18,32,.7);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.hero-info strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.hero-info span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* SEÇÕES VERTICAIS */
+
+.section-intro {
+  max-width: 750px;
+  margin-bottom: 40px;
+}
+
+/* SOBRE */
+
+.about-box {
+  padding: 40px;
+  background: linear-gradient(145deg,#0d1727,#070b12);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 0 30px rgba(7,85,184,.1);
+}
+
+.about-box p {
+  margin-top: 15px;
+}
+
+.about-highlight {
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--neon);
+  margin-bottom: 20px;
+}
+
+/* SERVIÇOS */
+
+.service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.service-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 23px;
+  padding: 30px;
+  background: linear-gradient(120deg,#0d1727,#070b12);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  transition: .25s;
+}
+
+.service-card:hover {
+  border-color: var(--neon);
+  transform: translateX(5px);
+  box-shadow: 0 0 25px rgba(7,85,184,.16);
+}
+
+.service-icon {
+  flex-shrink: 0;
+  width: 55px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  color: #55a8ff;
+  font-size: 25px;
+  background: rgba(7,85,184,.18);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.service-card p {
+  font-size: 14px;
+}
+
+/* DIFERENCIAIS */
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature {
+  padding: 24px;
+  background: rgba(11,18,32,.85);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  gap: 18px;
+}
+
+.feature-icon {
+  font-size: 24px;
+  color: #3c96ff;
+}
+
+/* ETAPAS */
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.step {
+  display: flex;
+  gap: 23px;
+  padding: 27px;
+  background: #0b1220;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+}
+
+.step-number {
+  color: var(--neon);
+  font-size: 32px;
+  font-weight: 900;
+  min-width: 55px;
+  text-shadow: 0 0 15px rgba(22,139,255,.4);
+}
+
+.step p {
+  font-size: 14px;
+}
+
+/* ORÇAMENTO */
+
+.budget-box {
+  padding: 38px;
+  background: linear-gradient(140deg,#0b1830,#070b12);
+  border: 1px solid var(--blue);
+  border-radius: 18px;
+}
+
+.budget-box p {
+  margin-bottom: 20px;
+}
+
+/* PORTFÓLIO */
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project {
+  padding: 32px;
+  min-height: 190px;
+  border-radius: 14px;
+  background: linear-gradient(120deg,#101e36,#080d16);
+  border: 1px solid var(--border);
+}
+
+.project-label {
+  color: #459cff;
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+/* FAQ */
+
+.faq-item {
+  background: #0b1220;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 23px;
+  margin-bottom: 14px;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: bold;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  color: var(--neon);
+  font-size: 22px;
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+}
+
+.faq-item p {
+  font-size: 14px;
+  padding-top: 17px;
+}
+
+/* CONTATO */
+
+.contact-box {
+  text-align: center;
+  padding: 55px 30px;
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(7,85,184,.24),
+      transparent 65%
+    ),
+    #080d16;
+  border: 1px solid var(--blue2);
+  border-radius: 20px;
+  box-shadow: 0 0 35px rgba(7,85,184,.15);
+}
+
+.contact-box p {
+  max-width: 620px;
+  margin: 0 auto 25px;
+}
+
+.phone {
+  font-size: 29px;
+  font-weight: bold;
+  color: #55a8ff;
+  margin-bottom: 25px;
+}
+
+/* RODAPÉ */
+
+footer {
+  margin-left: 255px;
+  padding: 45px 20px;
+  text-align: center;
+  background: #020306;
+  border-top: 1px solid var(--border);
+}
+
+footer p {
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+/* MENU MOBILE */
+
+.mobile-header,
+.mobile-nav {
+  display: none;
+}
+
+/* CONTROLES FLUTUANTES */
+
+.sound-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1200;
+  padding: 14px 18px;
+  border: 1px solid var(--blue2);
+  border-radius: 30px;
+  color: white;
+  background: #080e19;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(7,85,184,.3);
+}
+
+.sound-button:hover {
+  background: var(--blue);
+}
+
+.float-whatsapp {
+  position: fixed;
+  right: 20px;
+  bottom: 85px;
+  z-index: 1100;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  font-size: 24px;
+  color: white;
+  background: #087f54;
+  border: 1px solid #0ce68a;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0,255,145,.25);
+}
+
+/* RESPONSIVIDADE */
+
+@media(max-width:950px) {
+  .sidebar {
+    display: none;
+  }
+
+  main,
+  footer {
+    margin-left: 0;
+  }
+
+  .mobile-header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1300;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(3,5,8,.97);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-header .logo {
+    font-size: 23px;
+  }
+
+  .menu-toggle {
+    padding: 10px 14px;
+    border: 1px solid var(--blue);
+    background: #0b1a30;
+    color: white;
+    border-radius: 8px;
+    font-size: 19px;
+    cursor: pointer;
+  }
+
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 65px;
+    left: 0;
+    right: 0;
+    z-index: 1250;
+    padding: 12px 20px;
+    background: #060a12;
+    border-bottom: 1px solid var(--border);
+    max-height: 75vh;
+    overflow-y: auto;
+  }
+
+  .mobile-nav.open {
+    display: block;
+  }
+
+  .mobile-nav a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .mobile-nav a:hover {
+    color: #55a8ff;
+  }
+
+  section {
+    scroll-margin-top: 75px;
+  }
+
+  .hero {
+    padding-top: 120px;
+  }
+}
+
+@media(max-width:600px) {
+  section {
+    padding: 90px 6%;
+  }
+
+  .hero-info {
+    grid-template-columns: 1fr;
+    margin-top: 45px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  .service-card {
+    flex-direction: column;
+    padding: 25px;
+  }
+
+  .step {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .budget-box,
+  .about-box {
+    padding: 27px;
+  }
+
+  .contact-box {
+    padding: 40px 18px;
+  }
+
+  .phone {
+    font-size: 23px;
+  }
+
+  .sound-button {
+    right: 12px;
+    bottom: 12px;
+    font-size: 12px;
+  }
+
+  .float-whatsapp {
+    right: 14px;
+    bottom: 75px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+</style>
 </head>
 
 <body>
-  <header>
-    <div class="container nav">
-      <a class="logo" href="#inicio">NEXA<span>PERFIL</span></a>
 
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">
-        ☰ Menu
-      </button>
+<!-- MENU DESKTOP -->
 
-      <nav id="menu">
-        <a href="#inicio">Início</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#diferenciais">Diferenciais</a>
-        <a href="#processo">Como funciona</a>
-        <a href="#duvidas">Dúvidas</a>
-        <a href="#contato">Contato</a>
-      </nav>
+<aside class="sidebar">
+  <div class="logo">Nexa<span>Perfil</span></div>
+  <div class="logo-sub">EXPERIÊNCIAS DIGITAIS</div>
+
+  <div class="menu-title">NAVEGAÇÃO</div>
+
+  <nav class="nav-links">
+    <a href="#inicio">⌂ &nbsp; Início</a>
+    <a href="#sobre">◈ &nbsp; Sobre nós</a>
+    <a href="#servicos">▦ &nbsp; Serviços</a>
+    <a href="#diferenciais">✦ &nbsp; Diferenciais</a>
+    <a href="#processo">↗ &nbsp; Processo</a>
+    <a href="#orcamento">▤ &nbsp; Orçamento</a>
+    <a href="#portfolio">▣ &nbsp; Portfólio</a>
+    <a href="#faq">? &nbsp; Dúvidas</a>
+    <a href="#contato">✉ &nbsp; Contato</a>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <p>Vamos transformar sua ideia em uma presença digital?</p>
+
+    <a class="btn btn-whatsapp"
+       href="https://wa.me/5515996136598"
+       target="_blank"
+       rel="noopener noreferrer">
+       WhatsApp ↗
+    </a>
+
+    <p style="color:#368fff;margin-top:12px;">
+      (15) 99613-6598
+    </p>
+  </div>
+</aside>
+
+<!-- MENU CELULAR -->
+
+<header class="mobile-header">
+  <div class="logo">Nexa<span>Perfil</span></div>
+
+  <button class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="mobileNav">
+    ☰
+  </button>
+</header>
+
+<nav class="mobile-nav" id="mobileNav">
+  <a href="#inicio">Início</a>
+  <a href="#sobre">Sobre nós</a>
+  <a href="#servicos">Serviços</a>
+  <a href="#diferenciais">Diferenciais</a>
+  <a href="#processo">Processo</a>
+  <a href="#orcamento">Orçamento</a>
+  <a href="#portfolio">Portfólio</a>
+  <a href="#faq">Dúvidas</a>
+  <a href="#contato">Contato</a>
+</nav>
+
+<main>
+
+<!-- INÍCIO -->
+
+<section class="hero" id="inicio">
+<div class="container hero-content">
+
+  <span class="tag">TECNOLOGIA • DESIGN • INOVAÇÃO</span>
+
+  <h1>
+    Seu negócio merece uma presença
+    <span class="blue">digital extraordinária.</span>
+  </h1>
+
+  <p>
+    A NexaPerfil transforma ideias em apresentações
+    digitais modernas, organizadas e profissionais.
+    Criamos experiências para empresas, profissionais
+    e empreendedores que desejam valorizar sua marca.
+  </p>
+
+  <div class="hero-buttons">
+
+    <a href="#servicos" class="btn btn-primary">
+      Conhecer nossos serviços →
+    </a>
+
+    <a href="https://wa.me/5515996136598?text=Olá!%20Conheci%20a%20NexaPerfil%20pelo%20site."
+       target="_blank"
+       rel="noopener noreferrer"
+       class="btn btn-outline">
+      Falar com a NexaPerfil ↗
+    </a>
+
+  </div>
+
+  <div class="hero-info">
+    <div>
+      <strong>Design tecnológico</strong>
+      <span>Identidade visual moderna</span>
     </div>
-  </header>
 
-  <button class="music-btn" id="musicBtn" type="button">♪ Ativar trilha</button>
+    <div>
+      <strong>Experiência digital</strong>
+      <span>Organização e praticidade</span>
+    </div>
 
-  <main>
-    <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">PRESENÇA DIGITAL • DESIGN • CRIATIVIDADE</span>
-          <h1>Sua presença digital com <span class="neon-text">identidade.</span></h1>
-          <p>
-            Uma apresentação moderna, organizada e feita para destacar sua marca.
-            Transforme sua ideia em uma presença digital com visual profissional,
-            navegação simples e personalidade.
-          </p>
+    <div>
+      <strong>Foco empresarial</strong>
+      <span>Apresentação profissional</span>
+    </div>
+  </div>
 
-          <div class="actions">
-            <a class="btn btn-primary" href="#contato">Quero começar</a>
-            <a class="btn btn-outline" href="#servicos">Conhecer serviços</a>
-          </div>
-        </div>
+</div>
+</section>
 
-        <div class="visual" aria-label="Ilustração de um celular com uma página digital">
-          <div class="phone">
-            <div class="phone-screen">
-              <div class="phone-circle">N</div>
-              <strong>NexaPerfil</strong>
-              <small>Sua marca em destaque</small>
-              <div class="phone-line"></div>
-              <div class="phone-line"></div>
-              <div class="phone-line"></div>
-              <div style="margin-top:24px">
-                <span class="btn btn-primary" style="font-size:.75rem;padding:8px 12px">Conheça</span>
-              </div>
-            </div>
-          </div>
-        </div>
+<!-- SOBRE -->
+
+<section id="sobre">
+<div class="container">
+
+  <span class="tag">QUEM SOMOS</span>
+
+  <h2>Uma nova forma de apresentar sua marca.</h2>
+
+  <div class="about-box">
+
+    <div class="about-highlight">NexaPerfil.</div>
+
+    <h3>Digital com propósito.</h3>
+
+    <p>
+      A NexaPerfil tem como objetivo ajudar empresas,
+      profissionais e empreendedores a construírem
+      uma presença digital organizada e moderna.
+    </p>
+
+    <p>
+      Acreditamos que a apresentação de um negócio
+      deve transmitir clareza, personalidade e
+      profissionalismo.
+    </p>
+
+    <p>
+      Por isso, desenvolvemos páginas e apresentações
+      digitais que valorizam as informações importantes
+      da sua marca e facilitam o contato com seus clientes.
+    </p>
+
+    <p>
+      Cada projeto começa com uma conversa para entender
+      suas necessidades e definir o que será desenvolvido.
+    </p>
+
+  </div>
+
+</div>
+</section>
+
+<!-- SERVIÇOS -->
+
+<section id="servicos">
+<div class="container">
+
+  <span class="tag">NOSSAS SOLUÇÕES</span>
+
+  <div class="section-intro">
+    <h2>Soluções digitais para cada tipo de negócio.</h2>
+    <p>
+      Desenvolvemos apresentações digitais pensadas
+      para destacar sua empresa e facilitar a experiência
+      dos seus clientes.
+    </p>
+  </div>
+
+  <div class="service-list">
+
+    <article class="service-card">
+      <div class="service-icon">⌘</div>
+      <div>
+        <h3>Criação de sites</h3>
+        <p>
+          Desenvolvimento de páginas modernas e responsivas,
+          com informações organizadas, navegação intuitiva
+          e apresentação profissional da sua empresa.
+        </p>
       </div>
-    </section>
+    </article>
 
-    <section id="servicos" class="band">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">O QUE FAZEMOS</span>
-          <h2>Uma página com a sua <span class="neon-text">cara</span></h2>
-          <p class="section-intro">
-            Organização, visual marcante e informações fáceis de encontrar.
-            Tudo pensado para apresentar seu projeto de um jeito claro.
-          </p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <span class="card-icon">✦</span>
-            <h3>Identidade visual</h3>
-            <p>Uma apresentação com cores, elementos e estilo alinhados à personalidade do seu projeto.</p>
-          </article>
-
-          <article class="card">
-            <span class="card-icon">▣</span>
-            <h3>Site responsivo</h3>
-            <p>Layout adaptado para celular, tablet e computador, com leitura confortável.</p>
-          </article>
-
-          <article class="card">
-            <span class="card-icon">↗</span>
-            <h3>Contato facilitado</h3>
-            <p>Botões e informações organizados para que as pessoas encontrem como falar com você.</p>
-          </article>
-        </div>
+    <article class="service-card">
+      <div class="service-icon">◈</div>
+      <div>
+        <h3>Perfis digitais</h3>
+        <p>
+          Uma página que reúne informações da sua marca,
+          serviços, apresentação e formas de contato
+          em um único endereço digital.
+        </p>
       </div>
-    </section>
+    </article>
 
-    <section id="diferenciais">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">DETALHES QUE FAZEM DIFERENÇA</span>
-          <h2>Mais do que aparência: <span class="neon-text">experiência</span></h2>
-          <p class="section-intro">
-            Uma boa página precisa ser bonita, mas também simples de entender e usar.
-          </p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <span class="card-icon">◉</span>
-            <h3>Visual que chama atenção</h3>
-            <p>Contraste, brilho e elementos bem distribuídos para criar uma identidade marcante.</p>
-          </article>
-
-          <article class="card">
-            <span class="card-icon">⌁</span>
-            <h3>Informações organizadas</h3>
-            <p>Conteúdo separado por seções para o visitante encontrar o que procura sem confusão.</p>
-          </article>
-
-          <article class="card">
-            <span class="card-icon">✧</span>
-            <h3>Feito com propósito</h3>
-            <p>Estrutura planejada de acordo com o objetivo da sua marca, serviço ou projeto.</p>
-          </article>
-        </div>
+    <article class="service-card">
+      <div class="service-icon">✦</div>
+      <div>
+        <h3>Identidade visual</h3>
+        <p>
+          Organização de elementos visuais para comunicar
+          a personalidade do negócio e manter uma aparência
+          consistente na apresentação digital.
+        </p>
       </div>
-    </section>
+    </article>
 
-    <section class="band" id="processo">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">PASSO A PASSO</span>
-          <h2>Como funciona</h2>
-          <p class="section-intro">Um processo simples para tirar sua ideia do papel.</p>
-        </div>
-
-        <div class="steps">
-          <article class="step">
-            <h3>Você conta sua ideia</h3>
-            <p>Explique o que deseja apresentar, quais informações precisam aparecer e qual estilo imagina.</p>
-          </article>
-
-          <article class="step">
-            <h3>Planejamos a página</h3>
-            <p>Organizamos as seções e definimos uma direção visual para o projeto.</p>
-          </article>
-
-          <article class="step">
-            <h3>Você confere</h3>
-            <p>Apresentamos o resultado para você avaliar e conversar sobre possíveis ajustes.</p>
-          </article>
-        </div>
+    <article class="service-card">
+      <div class="service-icon">▤</div>
+      <div>
+        <h3>Apresentações comerciais</h3>
+        <p>
+          Estruturação das informações da empresa,
+          destacando seus serviços, diferenciais
+          e principais formas de atendimento.
+        </p>
       </div>
-    </section>
+    </article>
 
-    <section>
-      <div class="container">
-        <div class="highlight">
-          <div>
-            <span class="eyebrow">SEU PRÓXIMO PASSO</span>
-            <h2>Vamos dar vida à sua <span class="neon-text">ideia?</span></h2>
-            <p>
-              Conte um pouco sobre o seu projeto. A partir disso, podemos conversar
-              sobre o formato da página e o que faz sentido incluir.
-            </p>
-          </div>
-          <a class="btn btn-primary" href="#contato">Falar sobre meu projeto</a>
-        </div>
+    <article class="service-card">
+      <div class="service-icon">▣</div>
+      <div>
+        <h3>Experiência mobile</h3>
+        <p>
+          Projetos preparados para diferentes telas,
+          com atenção especial à navegação em celulares
+          e tablets.
+        </p>
       </div>
-    </section>
+    </article>
 
-    <section class="band" id="duvidas">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">PERGUNTAS FREQUENTES</span>
-          <h2>Ficou com alguma dúvida?</h2>
-        </div>
-
-        <div style="max-width:800px;margin:auto">
-          <details class="faq-item">
-            <summary>O site funciona no celular?</summary>
-            <p>Sim. A estrutura é responsiva e se adapta a telas menores, como smartphones.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>Posso escolher as cores e o estilo?</summary>
-            <p>Sim. Você pode explicar suas preferências para que a apresentação siga a identidade do seu projeto.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>Como faço para pedir informações?</summary>
-            <p>Preencha o formulário no final da página. Ele vai preparar uma mensagem para você enviar pelo WhatsApp.</p>
-          </details>
-
-          <details class="faq-item">
-            <summary>A música começa automaticamente?</summary>
-            <p>Não. Para respeitar as configurações do navegador, a trilha começa quando você toca no botão “Ativar trilha”.</p>
-          </details>
-        </div>
+    <article class="service-card">
+      <div class="service-icon">◎</div>
+      <div>
+        <h3>Integração com WhatsApp</h3>
+        <p>
+          Botões de atendimento que facilitam o contato
+          entre visitantes e empresas, com mensagens
+          iniciais personalizadas.
+        </p>
       </div>
-    </section>
+    </article>
 
-    <section id="contato">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">CONTATO</span>
-          <h2>Conte sua ideia para a <span class="neon-text">NexaPerfil</span></h2>
-          <p class="section-intro">Preencha os campos e envie sua mensagem pelo WhatsApp.</p>
-        </div>
+  </div>
+</div>
+</section>
 
-   
+<!-- DIFERENCIAIS -->
 
- 
+<section id="diferenciais">
+<div class="container">
+
+  <span class="tag">NOSSO COMPROMISSO</span>
+
+  <h2>Detalhes que fazem parte da experiência.</h2>
+
+  <p class="section-intro">
+    Cada projeto é desenvolvido com atenção à apresentação,
+    organização e facilidade de utilização.
+  </p>
+
+  <div class="feature-list">
+
+    <div class="feature">
+      <span class="feature-icon">✦</span>
+      <div>
+        <h3>Visual profissional</h3>
+        <p>
+          Aparência moderna, organizada e alinhada
+          à identidade do projeto.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <span class="feature-icon">✓</span>
+      <div>
+        <h3>Navegação intuitiva</h3>
+        <p>
+          Seções organizadas para que o visitante
+          encontre as informações facilmente.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <span class="feature-icon">◈</span>
+      <div>
+        <h3>Adaptação para celulares</h3>
+        <p>
+          Estrutura responsiva para diferentes
+          resoluções de tela.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <span class="feature-icon">♡</span>
+      <div>
+        <h3>Contato facilitado</h3>
+        <p>
+          Integração com WhatsApp para simplificar
+          o primeiro atendimento.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <span class="feature-icon">⌁</span>
+      <div>
+        <h3>Personalização</h3>
+        <p>
+          Estrutura definida conforme as necessidades
+          e objetivos combinados com o cliente.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <span class="feature-icon">↗</span>
+      <div>
+        <h3>Organização das informações</h3>
+        <p>
+          Conteúdo apresentado em uma sequência
+          lógica e fácil de acompanhar.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- PROCESSO -->
+
+<section id="processo">
+<div class="container">
+
+  <span class="tag">COMO FUNCIONA</span>
+
+  <h2>Uma jornada simples e organizada.</h2>
+
+  <p class="section-intro">
+    Da primeira conversa até a entre
